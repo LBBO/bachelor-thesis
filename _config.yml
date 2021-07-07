@@ -3,3 +3,8 @@ description: A bachelor thesis by Michael David Kuckuk
 theme: jekyll-theme-cayman
 anchors: true
 show_downloads: true
+
+# Change download URLs
+github:
+  pdf_url: https://lbbo.github.io/bachelor-thesis/thesis.pdf
+  zip_url: https://github.com/LBBO/bachelor-thesis/zipball/main
