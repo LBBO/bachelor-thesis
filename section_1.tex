@@ -1,0 +1,84 @@
+% !TEX root = ../thesis.tex
+
+\section{Layout}
+
+The layout of the title page is as shown on the title page of this document. It contains the thesis' title bordered by horizontal edges, information about the student, and information about the supervisors.
+
+All pages except the title page and the abstract are numbered. Numbers are placed on the pages' outer sides. Indicies are numbered in roman numerals whereas the rest is numbered in arabic numerals.
+
+Sections are numbered automatically. You can write sections and subsections to structure your text (using the corresponding LaTeX keywords). If necessary, you can further use a ``subsubsection'' keyword, but that should be enough.
+
+  \subsection{Structure}
+  The structure of a thesis is as follows:
+
+  \begin{itemize}
+      \item Title page
+      \item Declaration
+      \item Abstract
+      \item Table of Contents
+      \item Thesis Specific Structure of Sections
+      \item Lists of Figures, Tables, Listings (only if absolutely necessary)
+      \item References
+		\item Appendex (only if necessary)
+  \end{itemize}
+
+\section{Formatting}
+
+	All text is in single-column format. It is fully-justified 12\,pt Computer
+Modern. The Table of Contents--depth is set to 2, so even if there are deeper
+subsections, they not included in the Table of Contents.
+
+  \subsection{Figures and Tables}
+
+  Figures can be placed in your text to show some interesting stuff. In the simplest case, use the floating ``figure'' environment with a good caption (see Fig. \ref{fig:example}).
+
+  \begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{cat.jpeg}
+      \caption{A picture of a cat, the second most popular Internet theme.}
+		\label{fig:example}
+  \end{figure}
+
+  Figures should not contain code, use listings (see section \ref{subsec:listings}) instead. Captions contain a full description of the figure including parameters and color codes if not given within the figure. All figures have to be referenced in the text. Subfigures are alphabetically enumerated where the letters are parenthesized.  Caption are written \textit{below} figures, but \textit{above} tables (see Table \ref{tab:example}).
+
+  \begin{table}
+	  \centering
+	  \caption{A simple table example using the \textit{tabularx} package}
+	  \begin{tabularx}{0.4\textwidth}{cr}
+		  \textbf{Pet Type} & \textbf{Price [EUR]}\\
+		  \hline
+		  cat & 33.00 \\
+		  dog & 22.00 \\
+		  guinea pig & 11.00 \\
+		  \hline
+	  \end{tabularx}
+	  \label{tab:example}
+  \end{table}
+
+  \subsection{Equations}
+  All equations have to be referenced in the text and should be written as LaTeX math code and not included as an image. See any LaTeX math tutorial how to do this, for example the Wikipedia book on this subject: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}.
+
+  \subsection{Listings}
+  \label{subsec:listings}
+
+	All listings should be referenced in the text. There is a \textit{listings} package that can you can use to clearly show some code snippets in your text. See the CTAN website for more details: \url{https://ctan.org/pkg/listings}. In any case, listings should be used sparsely, use pseudo-code instead of source code where applicable.
+
+  \subsection{References}
+
+	When you refer to another publication or a website in your thesis, you must give a proper reference using Bibtex. You can cite a book, for example the LaTeX book by Leslie Lamport \cite{lamport2005}; or a conference paper, for example one given at Oulu, Finnland \cite{hilfert_koenig_2015}; or a paper in a journal, for example a paper in ``Visualization in Engineering'' \cite{hilfert_koenig_2016}.
+
+	Citing a website (URL) is OK, but include as much information as possible, not just the URL \cite{wiki:xxx}.
+
+	\subsection{Appendix}
+
+	\begin{itemize}
+		\item
+			Lots of pictures and diagrams...
+		\item
+			Lots of important pieces of program code...
+		\item
+			Long tables of important, but boring, numbers...
+		\item
+			Anything else which is important, but will hinder the reading in
+			the main text...
+	\end{itemize}

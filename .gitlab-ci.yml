@@ -1,0 +1,15 @@
+# job name
+iib_thesis-build:
+  # commands to execute
+  script:
+    - latexmk -pdf my_thesis.tex
+  # artifacts to collect after successful execution
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+    paths:
+      - "*.pdf"
+      - iib_thesis.cls
+      - "*.tex"
+      - my_bibliography.bib
+      - images/
+      - .gitignore
