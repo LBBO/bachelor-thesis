@@ -18,7 +18,7 @@ jobs:
 
       # From https://github.com/latextemplates/scientific-thesis-template/blob/main/.github/workflows/build-and-publish-with-latexmk.yml
       - name: Gather build artifacts
-        run: mkdir build && cp my_thesis.pdf build/thesis.pdf
+        run: mkdir build && cp my_thesis.pdf build/thesis.pdf && cp -r docs/* build/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
