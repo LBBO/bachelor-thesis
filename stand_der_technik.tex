@@ -1,0 +1,58 @@
+\section{Stand der Technik}
+Um dieses Konfigurationsproblem zu automatisieren oder zumindest zu erleichtern, gibt es bereits verschiedene Lösungen. Momentan sind drei Frontend-Frameworks besonders beliebt (React, Angular und Vue) \cite{stateofjs:fe_framework_usage} und für jedes dieser Frameworks existiert jeweils ein Programm, was (unter anderem) zur initialen Erstellung von Projekten mit dem jeweiligen Framework empfohlen wird.
+
+\subsection{React}
+In der Dokumentation für React wird empfohlen, neue Projekte über das \gls{CLI} \gls{CRA} zu erstellen. Dieses kann per \gls{npm} installiert werden und ist dann in der Lage, den Inhalt eines angegebenen Templates (oder des Standardtemplates) in ein angegebenes Verzeichnis zu kopieren. Daraufhin werden die benötigten Abhängigkeiten per \gls{npm} oder mittels eines anderen installierten Paketmanagers (wie z.B. Yarn) installiert.
+
+Dritten ist es möglich, eigene Templates für \gls{CRA} zu erzeugen, die dann wie Erstanbietertemplates zur Erzeugung des neuen Projekts genutzt werden können. Wenn man also mittels \gls{CRA} ein Projekt erzeugen möchte, das bereits mit gewissen Bibliotheken oder Werkzeugen ausgestattet ist, muss dafür dafür ein Template erstellt worden sein. Die Wahrscheinlichkeit, dass das jedoch passiert ist, sinkt mit der Spezifität der Wünsche.
+
+\subsection{Angular}
+Das Angular-Team stellt das sog. Angular-CLI zur Verfügung, das Entwickelnden beim Programmieren verschiedene wiederkehrende und repetitive Aufgaben abnehmen soll (wie z.B. die Erstellung und Einbindung neuer Komponenten). Neben diesen Aufgaben wird das Tool auch zur Erstellung neuer Angular-Projekte genutzt.
+
+Der Befehl ng new <project-name> führt Nutzende in einen Dialog, bei dem einige Fragen zur gewünschten Konfiguration des Projektes gestellt werden. Es können vier Features konfiguriert werden und daraufhin wird das Projekt eingerichtet.
+
+Im Gegensatz zu CRA sind hier die Möglichkeiten, die Nutzenden geboten werden, sehr eingeschränkt, da es nicht wie bei den Templates für Dritte die Möglichkeit gibt, neue Libraries mitsamt entsprechender Konfiguration in den Erstellungsprozess einzubinden. Dafür können sich Nutzende hier (im Rahmen der beschränkten angebotenen Optionen) eine beliebige Konfiguration aussuchen und sind nicht darauf angewiesen, dass jemand vor ihnen schon denselben Wunsch hatte. Außerdem wird so auch Anfänger:innen die Entdeckung und der Einstieg in neue Libraries erleichtert.
+
+
+\subsection{Vue}
+Von den drei Frameworks bietet Vue in Bezug auf die Projekterstellung das umfangreichste CLI. Hier trifft man zunächst eine Vorauswahl von zehn Features, die man haben oder nicht haben möchte. Daraufhin werden zu den ausgewählten Features detailliertere Fragen gestellt. Insgesamt stehen einem durch dieses Tool über 20 verschiedene Libraries ohne weiteren Konfigurationsaufwand zur Verfügung.
+
+
+\subsection{Vergleich der Möglichkeiten zwischen Frameworks}
+Alle drei Tools bieten Entwickelnden die Möglichkeit, eigene Erweiterungen zu erarbeiten und zu veröffentlichen. Im Falle von React muss dies in Form eines Templates geschehen. Da nur ein Template zur Erstellung eines Projektes genutzt werden kann, sind derartige Erweiterungen hier also exklusiv.
+
+Bei Angular und React ist es jedoch möglich, auch Erweiterungen zu entwickeln, die zusätzlich zu anderen Optionen und Erweiterungen nutzbar sind. Für das Angular \gls{CLI} kann man sogenannte Schematics entwickeln, die das Hinzufügen und Einbinden einer Bibliothek vollautomatisch übernehmen. Diese Schematics müssen aber leider nach der Installation ausgeführt werden und müssen insbesondere von Nutzenden entdeckt werden. Hierfür gibt es keine eigene Plattform o.ä. und die Auswahl der Schematics, die schon bei der Projekterstellung auswählbar sind, beschränkt sich auf Angular-interne Features (z.B. die Einfügung eines Routers). Selbst Libraries, die auch vom Angular-Team betreut werden (z.B. Angular Material) müssen später per Schematic nachgerüstet werden.
+
+Im Rahmen des Vue \gls{CLI}'s ist es immerhin möglich, auch Libraries von Dritten direkt bei der Projekterstellung einzubinden. Allerdings ist auch hier die anfängliche Auswahl nicht erweiterbar. Dafür können, wie auch schon bei Angular, anschließend automatisch über Drittanbieterplugins neue Libraries heruntergeladen, importiert und demonstriert werden.
+
+Tabelle 
+
+  \begin{table}
+	  \centering
+	  \caption{Automatische und initiale Installierbarkeit verschiedener Features in Angular und Vue Projekten}
+	  \begin{tabular}{|l|l|l|l|l|}
+    \hline
+         & \multicolumn{2}{c|}{Angular} & \multicolumn{2}{c|}{Vue}  \\ \hline
+        Feature & Automatisch & Ititial & Automatisch & Initial \\
+        & installierbar & auswählbar & installierbar & auswählbar \\ \hline
+        TypeScript & \multicolumn{2}{c|}{wird erzwungen} & \checkmark & \checkmark \\ \hline
+        Router & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        PWA-Support & \checkmark & \texttimes & \checkmark & \checkmark \\ \hline
+        Linter & \checkmark & \texttimes & \checkmark & \checkmark \\ \hline
+        Formatierer & \checkmark & \texttimes & \checkmark & \checkmark \\ \hline
+        CSS Reset & \texttimes & \texttimes & \texttimes & \texttimes \\ \hline
+        CSS Präprozessor & \checkmark & \checkmark & \checkmark & \checkmark \\ \hline
+        Design Framework & \checkmark & \texttimes & \checkmark & \texttimes \\ \hline
+        State Management & \multicolumn{2}{c|}{wird erzwungen} & \checkmark & \checkmark \\ \hline
+        Unit Testing Framework & \checkmark & \texttimes & \checkmark & \checkmark \\ \hline
+        E2E Testing Framework & \checkmark & \texttimes & \checkmark & \checkmark \\ \hline
+    \end{tabular}
+	  \label{tab:automatically_installable_libs_per_framework}
+  \end{table}
+
+Außerdem bieten alle drei der genannten Tools keine Unterstützung für andere Frameworks. Daher ist beispielsweise der große Umfang der Features des Vue CLI‘s leider nicht in einem Angular-Projekt nutzbar.
+
+
+
+
+

@@ -41,6 +41,7 @@
 % bibliography
 \RequirePackage[square, numbers]{natbib}    % advanced citing commands
 \bibliographystyle{abbrvnat}            % abbreviated author names
+\RequirePackage[acronym,nomain]{glossaries} % acronyms via \newacronym and \gls
 
 %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %%
 

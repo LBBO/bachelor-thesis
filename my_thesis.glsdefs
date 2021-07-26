@@ -1,0 +1,150 @@
+\ifglsentryexists{CLI}{}%
+{%
+\gls@defglossaryentry{CLI}%
+{%
+name={CLI},%
+sort={CLI},%
+type={acronym},%
+first={Command Line Interface\glsspace (CLI)},%
+firstplural={Command Line Interfaces\glsspace (CLIs)},%
+text={CLI},%
+plural={CLIs},%
+description={Command Line Interface},%
+descriptionplural={Command Line Interface\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Command Line Interface},%
+longplural={Command Line Interfaces},%
+short={CLI},%
+shortplural={CLIs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{CRA}{}%
+{%
+\gls@defglossaryentry{CRA}%
+{%
+name={CRA},%
+sort={CRA},%
+type={acronym},%
+first={create-react-app\glsspace (CRA)},%
+firstplural={create-react-apps\glsspace (CRAs)},%
+text={CRA},%
+plural={CRAs},%
+description={create-react-app},%
+descriptionplural={create-react-app\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={create-react-app},%
+longplural={create-react-apps},%
+short={CRA},%
+shortplural={CRAs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{TS}{}%
+{%
+\gls@defglossaryentry{TS}%
+{%
+name={TS},%
+sort={TS},%
+type={acronym},%
+first={TypeScript\glsspace (TS)},%
+firstplural={TypeScripts\glsspace (TSs)},%
+text={TS},%
+plural={TSs},%
+description={TypeScript},%
+descriptionplural={TypeScript\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={TypeScript},%
+longplural={TypeScripts},%
+short={TS},%
+shortplural={TSs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{JS}{}%
+{%
+\gls@defglossaryentry{JS}%
+{%
+name={JS},%
+sort={JS},%
+type={acronym},%
+first={JavaScript\glsspace (JS)},%
+firstplural={JavaScripts\glsspace (JSs)},%
+text={JS},%
+plural={JSs},%
+description={JavaScript},%
+descriptionplural={JavaScript\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={JavaScript},%
+longplural={JavaScripts},%
+short={JS},%
+shortplural={JSs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{npm}{}%
+{%
+\gls@defglossaryentry{npm}%
+{%
+name={NPM},%
+sort={NPM},%
+type={acronym},%
+first={Node Package Manager\glsspace (NPM)},%
+firstplural={Node Package Managers\glsspace (NPMs)},%
+text={NPM},%
+plural={NPMs},%
+description={Node Package Manager},%
+descriptionplural={Node Package Manager\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Node Package Manager},%
+longplural={Node Package Managers},%
+short={NPM},%
+shortplural={NPMs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
