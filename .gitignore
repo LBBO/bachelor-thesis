@@ -8,6 +8,7 @@
 *.toc
 *.backup
 /*.pdf
+*.out.ps
 
 ## Previews:
 *.prv
