@@ -1,3 +1,4 @@
+\RequirePackage[dvipsnames]{xcolor} % Change font colors
 \documentclass[%
   ngerman,        % (ngerman/english) internationalisation
 %  listoffigures,  % optional listings of figures, tables and listings
@@ -5,6 +6,8 @@
 %  listoflistings,
 %  twoside,        % double sided layout
 ]{iib_thesis}
+
+\newcommand{\missingQuote}{\textcolor{red}{\underline{\textbf{\uppercase{zitat fehlt}}}}}
 
 \title{Entwicklung eines erweiterbaren Kommandozeileninterfaces zur Generierung von Web-Applikationen}
 \author{Michael David Kuckuk}

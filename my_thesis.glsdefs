@@ -148,3 +148,63 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{MVC}{}%
+{%
+\gls@defglossaryentry{MVC}%
+{%
+name={MVC},%
+sort={MVC},%
+type={acronym},%
+first={Model View Controller\glsspace (MVC)},%
+firstplural={Model View Controllers\glsspace (MVCs)},%
+text={MVC},%
+plural={MVCs},%
+description={Model View Controller},%
+descriptionplural={Model View Controller\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Model View Controller},%
+longplural={Model View Controllers},%
+short={MVC},%
+shortplural={MVCs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{DOM}{}%
+{%
+\gls@defglossaryentry{DOM}%
+{%
+name={DOM},%
+sort={DOM},%
+type={acronym},%
+first={Document Object Model\glsspace (DOM)},%
+firstplural={Document Object Models\glsspace (DOMs)},%
+text={DOM},%
+plural={DOMs},%
+description={Document Object Model},%
+descriptionplural={Document Object Model\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Document Object Model},%
+longplural={Document Object Models},%
+short={DOM},%
+shortplural={DOMs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
