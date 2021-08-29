@@ -1,0 +1,40 @@
+\section{Konzeptionierung}
+Angesichts dessen, dass das geplante \gls{CLI} verschiedenste Bilbiotheken und Werkzeuge unterstützen können soll und dabei auch zukunftssicher bleiben soll, ist es unabdingbar, die Entwicklung im Vorhinein zu planen. Hierfür muss zunächst untersucht werden, welche Gemeinsamkeiten und welche Unterschiede bei verschiedenen Installationsprozessen vorliegen. Daraufhin kann dann ein System erarbeitet werden, was die Gemeinsamkeiten fördert und gleichzeitig Raum für die bekannten, aber auch möglichst für erwartbare unbekannte Unterschiede lässt.
+
+\subsection{Anforderungsanalyse}
+Um zu bestimmen, welche Schritte bei der Einrichtung von neuen Projekten durchführbar sein müssen, wurden zunächst verschiedenste Projekte erstellt, zu denen dann möglichst verschiedene Abhängigkeiten und Werkzeuge hinzugefügt wurden.
+
+Aufgrund der bereits erläuterten Beliebtheit von Frontend-Frameworks wurde für jedes der drei bekanntesten Framework ein Projekt erstellt, in dem dann die entsprechenden Installationen durchgeführt wurden. Für diese initiale Erstellung wurde jeweils das bereits vorgestellte \gls{CLI} verwendet.
+
+Bei der Auswahl dessen, was zu diesen Projekten hinzugefügt wurde, lag der Fokus zum einen auf Bekanntheit und Verbreitung und zum anderen auf Vielseitigkeit. Da sich ähnliche Tools oft auch in ihrem Installationsprozess ähneln (beispielsweise waren die Schritte zur Installation von ESLint fast identisch zu den Schritten zur Installation von TSLint\footnote{\url{https://palantir.github.io/tslint/}}), ist es für diese Vorbereitung also nicht nötig, eine Abhängigkeit hinzuzufügen, wenn bereits eine andere ausprobiert wurde, die einen Ähnlichen Funktionsumfang hat.
+
+Aus diesen Gründen wurden folgende Werkzeuge installiert:
+
+\begin{itemize}
+\item \textbf{ESLint} ist ein Werkzeug zur statischen Codeanalyse für JavaScript. Es gibt Warnungen aus, wenn bestimmte Ausdrücke verwendet wurden, die häufig zu Bugs führen (z.B. die Verwendung von einem doppelten Gleichheitszeichen anstelle eines dreifachen Gleichheitszeichens, d.h. die typunsichere Gleichheitsüberprüfung anstelle Gleichheitsprüfung mit Prüfung auf Typgleichheit).
+
+ESLint verfügt auch über die Möglichkeit, Formatierungspräferenzen anzugeben. Diese werden in die Analyse mit einbezogen und darüber können beispielsweise Warnungen ausgegeben werden, wenn Zeilen falsch eingerückt sind. Einige Warnungen, darunter die meisten Warnungen zur Formatierung, können von ESLint auf Wunsch automatisch behoben werden. Standardmäßig ist ESLint jedoch nur passiv, also idempotent.
+
+ESLint wird stellvertretend für alle Tools zur statischen Codeanalyse überprüft. Insbesondere entfällt deshalb die Überprüfung von TSLint; zumal das Projekt veraltet ist und die Entwicklung zugunsten von ESLint aufgegeben wurde \cite{tslint_deprecation} \cite{tslint_repo}. Da es aber noch automatisch mit Angular zusammen installiert wird, hätte man seine Überprüfung dennoch in Betracht ziehen können.
+
+\item \textbf{Prettier} ist ein Codeformatierer, der unter freiwilliger Angabe von Konfigurationseigenschaften Code einheitlich formatiert (d.h. Einrückungen werden korrigiert, Leerzeichen vor oder hinter Klammern eingefügt oder entfernt etc.). Gegenüber ESLint hat Prettier den Vorteil, nicht nur JavaScript-basierte Dateien formatieren zu können, sondern es kann auch mit anderen Dateiformaten wie Markdown oder CSS umgehen.
+
+Darüber hinaus kann Prettier auch ohne Konfiguration (d.h. ohne Festlegung von Präferenzen) aufgerufen werden um Code zu formatieren. ESLint hingegen muss ausgiebig konfiguriert werden, damit der Code formatiert wird. Zudem hat Prettier mehr Einstellmöglichkeiten als ESLint (zumindest in Bezug auf Formatierung).
+
+\item \textbf{SCSS / Sass}\footnote{\url{https://sass-lang.com/}} sind zwei Dialekte eines CSS-Präprozessors. Dieser Präprozessor erweitert die CSS-Syntax um eine weitere Art von Variablen, Verschachtelung, sogenannten "Mixins" und weitere Features. Zur Kompilierzeit wird daraus normales CSS erzeugt. Dank der zusätzlichen Funktionen kann kompakteres, wiederholungsfreieres und oft auch leserlicheres CSS geschrieben werden.
+
+Zugunsten von SCSS / Sass wurde auf die weitere Überprüfung anderer Präprozessoren wie Less\footnote{\url{https://lesscss.org/}} verzichtet.
+\end{itemize}
+
+Außerdem wurden die folgenden Bibliotheken installiert:
+
+\begin{itemize}
+\item \textbf{Router} - Jedes der drei Frameworks verfügt über eine Unterbibliothek um verschiedene Routen einzurichten. So kann man ohne ein Neuladen der Seite die URL wechseln, diese Änderung auch im Browserverlauf widerspiegeln lassen und auch schon beim Aufruf einer Unter-URL direkt die entsprechende Komponente anzeigen lassen.
+
+Für React muss das \gls{npm}-Paket "react-router-dom" (und, falls TypeScript gewünscht ist, die zugehörigen Typdefinitionen) installiert werden. Daraufhin muss man die Hauptkomponente mit einer bestimmten Komponente umgeben, die vorher zu importieren ist. In neu zu erstellenden Dateien kann man dann Routen definieren, die dann wieder in der Hauptkomponente importiert und eingebunden werden müssen.
+
+Die Installation eines Routers für Angular und Vue ist erheblich einfacher: hier muss lediglich bei der initialen Installation angegeben werden, dass der jeweilige Router installiert und initialisert werden soll.
+\end{itemize}
+
+\subsection{Wahl des generellen Vorgehens}
+\subsection{Planung der Erweiterungen}
