@@ -208,3 +208,63 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{VCS}{}%
+{%
+\gls@defglossaryentry{VCS}%
+{%
+name={VCS},%
+sort={VCS},%
+type={acronym},%
+first={Versionskontrollsystem bzw. Engl.: Version Control System\glsspace (VCS)},%
+firstplural={Versionskontrollsystem bzw. Engl.: Version Control Systems\glsspace (VCSs)},%
+text={VCS},%
+plural={VCSs},%
+description={Versionskontrollsystem bzw. Engl.: Version Control System},%
+descriptionplural={Versionskontrollsystem bzw. Engl.: Version Control System\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Versionskontrollsystem bzw. Engl.: Version Control System},%
+longplural={Versionskontrollsystem bzw. Engl.: Version Control Systems},%
+short={VCS},%
+shortplural={VCSs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{JSON}{}%
+{%
+\gls@defglossaryentry{JSON}%
+{%
+name={JSON},%
+sort={JSON},%
+type={acronym},%
+first={JavaScript Object Notation\glsspace (JSON)},%
+firstplural={JavaScript Object Notation\acrpluralsuffix \glsspace (JSON\acrpluralsuffix )},%
+text={JSON},%
+plural={JSON\acrpluralsuffix },%
+description={JavaScript Object Notation},%
+descriptionplural={JavaScript Object Notation\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={JavaScript Object Notation},%
+longplural={JavaScript Object Notations},%
+short={JSON},%
+shortplural={JSONs},%
+counter={page},%
+parent={},%
+%
+}%
+}%

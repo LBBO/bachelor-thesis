@@ -1,7 +1,7 @@
 \section{Konzeptionierung}
 Angesichts dessen, dass das geplante \gls{CLI} verschiedenste Bilbiotheken und Werkzeuge unterstützen können soll und dabei auch zukunftssicher bleiben soll, ist es unabdingbar, die Entwicklung im Vorhinein zu planen. Hierfür muss zunächst untersucht werden, welche Gemeinsamkeiten und welche Unterschiede bei verschiedenen Installationsprozessen vorliegen. Daraufhin kann dann ein System erarbeitet werden, was die Gemeinsamkeiten fördert und gleichzeitig Raum für die bekannten, aber auch möglichst für erwartbare unbekannte Unterschiede lässt.
 
-\subsection{Anforderungsanalyse}
+\subsection{Auswahl der zu vergleichenden Installationsprozesse}
 Um zu bestimmen, welche Schritte bei der Einrichtung von neuen Projekten durchführbar sein müssen, wurden zunächst verschiedenste Projekte erstellt, zu denen dann möglichst verschiedene Abhängigkeiten und Werkzeuge hinzugefügt wurden.
 
 Aufgrund der bereits erläuterten Beliebtheit von Frontend-Frameworks wurde für jedes der drei bekanntesten Framework ein Projekt erstellt, in dem dann die entsprechenden Installationen durchgeführt wurden. Für diese initiale Erstellung wurde jeweils das bereits vorgestellte \gls{CLI} verwendet.
@@ -24,17 +24,72 @@ Darüber hinaus kann Prettier auch ohne Konfiguration (d.h. ohne Festlegung von 
 \item \textbf{SCSS / Sass}\footnote{\url{https://sass-lang.com/}} sind zwei Dialekte eines CSS-Präprozessors. Dieser Präprozessor erweitert die CSS-Syntax um eine weitere Art von Variablen, Verschachtelung, sogenannten "Mixins" und weitere Features. Zur Kompilierzeit wird daraus normales CSS erzeugt. Dank der zusätzlichen Funktionen kann kompakteres, wiederholungsfreieres und oft auch leserlicheres CSS geschrieben werden.
 
 Zugunsten von SCSS / Sass wurde auf die weitere Überprüfung anderer Präprozessoren wie Less\footnote{\url{https://lesscss.org/}} verzichtet.
+
+\item \textbf{Jest} ist eine Bibliothek zum Schreiben und Ausführen automatisierter Tests. Diese werden in Node.js ausgeführt und verfügen daher a priori nicht über Browserspezifische APIs (wie z.B. Zugriff auf Canvas-Elemente). Viele dieser Funktionalitäten sind aber ggf. über weitere Bibliotheken Nachrüstbar. In der Regel wird Jest für Unittests verwendet.
+
+Im Vergleich zu anderen Tools vereint Jest mehrere Funktionalitäten, die sonst über mehrere Abhängigkeiten aufgeteilt sind. Wo sonst der Ausführer der Tests von der Bibliothek zur Aufstellung und Überprüfung von Annahmen (Engl.: \glqq Assertion Library\grqq) und der Mockingbibliothek getrennt ist und zur Erzeugung eines Berichtes über die Testabdeckung eine weitere Bibliothek notwendig ist, bietet Jest alle diese Features gleichzeitig an.
+
+Seit 2019 ist Jest das meist verbreitetste Werkzeug zum Schreiben von JavaScript-Tests \cite{stateofjs} und unterstützt dabei alle drei Frameworks. Außerdem ist seine Installation vergleichsweise sehr simpel, da hier nicht mehrere Tools zusammen installiert und miteinander eingerichtet werden müssen. Da diese höhere Komplexität also vermeidbar ist, werden andere Library-Kombinationen für Unittests nicht näher betrachtet.
+
+\item \textbf{Cypress} ist ein weiteres Werkzeug zum Schreiben automatisierter Tests, allerdings mit dem wichtigen Unterschied zu Jest, dass die Tests im Browser ausgeführt werden. Aktuell ist Cypress in der Lage, Chromium-basierte Browser und Firefox zu kontrollieren, um das Laden und die Interaktion mit einer Seite nicht nur per Node.js zu simulieren, sondern entsprechende Ereignisse in einem Browser so auszulösen, dass sie nicht (in relevantem Ausmaß) von tatsächlichen Userinteraktionen unterschieden werden können. Außerdem stehen in diesen Tests die Browser-APIs in vollem Umfang zur Verfügung.
+
+Seit 2020 wird Cypress öfter als vergleichbare Projekte wie Puppeteer oder WebdriverIO verwendet \cite{stateofjs}, weshalb diese zugunsten von Cypress nicht weiter berücksichtigt werden.
+
+\item \textbf{Husky und lint-staged} ist eine Kombination von Tools, die die Ausführung anderer Tools als Reaktion auf bestimmte Ereignisse ermöglichen.
+
+Einige der zuvor aufgeführten Tools bieten Leistungen an, die dabei helfen können, sicherzustellen, dass in ein \gls{VCS} eingepflegter Code immer gewissen Standards entspricht. Die automatischen Tests können beispielsweise garantieren, dass kein zuvor existierendes (und von Tests abgedecktes) Feature kaputt gemacht worden ist, und Prettier und ESLint könne garantieren, dass der Code einem gewissen Stil entspricht. Andere Werkzeuge wie CSS-Präprozessoren hingegen bieten in dieser Hinsicht keine weiteren Vorteile.
+
+Um die Qualität des Codes auf einem möglichst hohen Niveau zu halten, kann es also sinnvoll sein, diese entsprechenden Tools automatisch vor der Einpflegung des Codes in ein \gls{VCS} ausführen zu lassen. Genau diese Möglichkeit bietet Husky, sofern das \gls{VCS} Git verwendet wird. Diese Annahme lässt sich durchaus treffen, da Git mit einem Abstand von ??? das am weitesten verbreitete \gls{VCS} ist \missingQuote.
+
+Mithilfe von Husky lassen sich mit wenig Konfigurationsaufwand Skripte festlegen, die vor dem Speichern von Code in Git ausgeführt werden sollen. Scheitert eines dieser Skripte, so wird der Speichervorgang abgebrochen. Lint-staged erleichtert hierbei das Überprüfen der geänderten Dateien, sodass nicht bei jeder Änderung der gesamte Code geprüft werden muss.
+
+Aufgrund dessen, dass diese beiden Tools empfohlen werden, um Prettier automatisch vor entsprechenden Vorgängen laufen zu lassen, und da ihre Verwendung sich leicht auf zusätzliche Tools erweitern lässt, werden Husky und lint-staged vergleichbaren Alternativen vorgezogen.
 \end{itemize}
 
 Außerdem wurden die folgenden Bibliotheken installiert:
 
 \begin{itemize}
-\item \textbf{Router} - Jedes der drei Frameworks verfügt über eine Unterbibliothek um verschiedene Routen einzurichten. So kann man ohne ein Neuladen der Seite die URL wechseln, diese Änderung auch im Browserverlauf widerspiegeln lassen und auch schon beim Aufruf einer Unter-URL direkt die entsprechende Komponente anzeigen lassen.
+\item \textbf{Router} - Jedes der drei Frameworks verfügt über eine Unterbibliothek um verschiedene Routen einzurichten. So kann man ohne ein Neuladen der Seite die URL wechseln, diese Änderung auch im Browserverlauf widerspiegeln lassen und auch schon beim Aufruf einer Unter-URL direkt die entsprechende Komponente anzeigen lassen. Schon die Tatsache, dass die Installation eines Routers in Angular- und Vueprojekten schon bei der initialen Einrichtung ausgelöst werden kann, zeigt, dass Router sehr häufig verwendet werden. Für ein jeweiliges Framework gibt es außerdem in der Regel genau einen geläufigen Router, sodass sich hier keine besondere Bevorzugung stattgefunden hat. Stattdessen wurden alle drei Router gleichermaßen untersucht.
 
-Für React muss das \gls{npm}-Paket "react-router-dom" (und, falls TypeScript gewünscht ist, die zugehörigen Typdefinitionen) installiert werden. Daraufhin muss man die Hauptkomponente mit einer bestimmten Komponente umgeben, die vorher zu importieren ist. In neu zu erstellenden Dateien kann man dann Routen definieren, die dann wieder in der Hauptkomponente importiert und eingebunden werden müssen.
+%Für React muss das \gls{npm}-Paket "react-router-dom" (und, falls TypeScript gewünscht ist, die zugehörigen Typdefinitionen) installiert werden. Daraufhin muss man die Hauptkomponente mit einer bestimmten Komponente umgeben, die vorher zu importieren ist. In neu zu erstellenden Dateien kann man dann Routen definieren, die dann wieder in der Hauptkomponente importiert und eingebunden werden müssen.
+%
+%Die Installation eines Routers für Angular und Vue ist erheblich einfacher: hier muss lediglich bei der initialen Installation angegeben werden, dass der jeweilige Router installiert und initialisert werden soll.
 
-Die Installation eines Routers für Angular und Vue ist erheblich einfacher: hier muss lediglich bei der initialen Installation angegeben werden, dass der jeweilige Router installiert und initialisert werden soll.
+\item \textbf{Redux} - Wie bereits erläutert, verfügt React nicht über eine besonders empfohlene Methode zum zentralen Statemanagement. Diese Lücke kann jedoch von Redux gefüllt werden. Mithilfe von Redux kann ein zentraler sogenannter "Store" erzeugt werden. Dieser kann modifiziert werden, indem man an anderer Stelle eine sogenannte "Action" erzeugt, die an den Store weitergeleitet wird. Daraufhin werden sogenannte "Reducer" aufgerufen, die den aktuellen Wert des Stores und die aktuelle Action entgegennehmen und einen neuen, entsprechend der Action aktualisierten Store zurückgeben.
+
+Diese Reducer sind stets pure Funktionen\footnote{D.h. sie sind seiteneffektfrei und ergeben bei gleicher Eingabe immer die gleiche Ausgabe.} und sind daher (da sie keinen Initialisierungsprozess voraussetzen und nichts anderes beeinflussen) sehr leicht testbar. Außerdem ermöglicht Redux in Kombination mit einer Browsererweiterung mehrere interessante Features, darunter ein Feature namens "Zeitreise", mit dem man den Store zu einem beliebigen vorherigen Stand zurücksetzen kann.
+
+Redux lässt sich als eine Implementierung des Kommandopatterns \missingQuote\ betrachten. Hierbei stellen die Actions die Kommandos dar und der Store ist der Ausführer, der auch die Kommandohistorie verwaltet. Entsprechend stellt Redux auch automatisch eine Aufwandslose Undo-Redo-Funktionalität zur Verfügung.
+
+Da Redux die meistverwendete Bibliothek für Statemanagement ist \cite{stateofjs}, wird ihre Installation stellvertretend für Alternativen wie MobX betrachtet. Ausnahme hiervon bildet jedoch Vuex, da es eine sehr hohe Ähnlichkeit zu Redux aufweist, sich mit besonders wenig Aufwand in einem Vue-Projekt installieren lässt und es für Vue-Projekte anstelle von Redux empfohlen wird \cite{vuejs_docs:redux_vs_vuex}.
+
+\item \textbf{Komponentenlibraries} - Gerade für kleine Projekte, in denen keine eigenen Designer angestellt sind, kann es sich sehr lohnen, eine Kombonentenlibrary einzubinden. Da diese jeweils für ein Framework Komponenten bereitstellen muss, gibt es in der Regel für verschiedene Design Systeme jeweils eine Bibliothek pro Framework.
+
+Stellvertretend für andere Komponentenlibraries wurden drei Material-Design-Libraries untersucht: Material UI für React, Angular Material für Angular und Vuetify für Vue.
+
+\item \textbf{Paper.js} - Um abschließend noch eine Bibliothek zu untersuchen, die an sich keinerlei Bindung an Frameworks hat aber trotzdem in die Applikation eingebunden werden muss, wurde willkürlich als Beispiel paper.js ausgewählt. Diese Library erleichtert den Umgang mit dem HTML Canvas.
 \end{itemize}
+
+\subsection{Vergleich der Installationsprozesse}
+Beim manuellen Installieren der verschiedenen Tools und Libraries sind einige Gemeinsamkeiten und vor allem in den Details viele Unterschiede aufgefallen. Auf einer allgemeineren, konzeptuellen Ebene lässt sich aber vor allem (wie bereits geschehen) zwischen Werkzeugen und Bibliotheken unterscheiden.
+
+Allgemeinhin müssen für beides zunächst \gls{npm}-Pakete installiert werden. Daraufhin benötigen aber Werkzeuge meist die Änderung von Konfigurationsdateien, während zur Einbindung von Bibliotheken eher der produktive Code modifiziert werden muss.
+
+Zur Installation von Prettier ist beispielsweise lediglich noch die Erstellung einer Konfigurationsdatei für Prettier notwendig. Theoretisch kann auch auf diese Verzichtet werden, aber da ein Ziel des Projektes ist, dass Nutzende alles Wichtige für die meiste Arbeit eingerichtet bekommen, ist es sinnvoll, die Datei bereits zu erstellen und mit sinnvollen Standardwerten zu füllen. Darüber hinaus ist es ratsam, zur leichteren Ausführung von Prettier (wie bei den meisten anderen Werkzeugen auch) ein \gls{npm}-Script zu erzeugen. Hierfür muss die package.json-Datei modifiziert werden können.
+
+Ähnlich ist bei der Installation von ESLint vorzugehen. In der Regel bedarf es lediglich der Installation des Paketes, der Einrichtung eines entsprechenden Scripts und der Erzeugung der Konfigurationsdatei. Leider wird der Installationsprozess bei der Benutzung von Angular dadurch verkompliziert, dass hier standardmäíg zunächst das veraltete TSLint eingebunden ist. Allerdings gibt es bereits ein \gls{npm}-Paket\footnote{\url{https://github.com/angular-eslint/angular-eslint}}, was den Wechsel auf ESLint automatisch durchführen kann.
+
+Mit überdurchschnittlich wenig Aufwand lässt sich Sass / SCSS installieren. Sowohl Angular als auch Vue verfügen hierzu über einen Parameter bei der initialen Installation. Bei React muss man zwar das node-sass Paket installieren, aber weitere Einrichtung muss nicht vorgenommen werden.
+
+Überdurchschnittlich viel Aufwand verursachten dahingegen Jest und Cypress. In Kombination mit React wird Jest zwar automatisch installiert und im Vue-\gls{CLI} gibt es hierfür eine entsprechende Option. Allerdings setzt Angular bisher auf Karma als Testausführer und Mocha als Assertion Library, weshalb hier nicht nur eine Installation von Jest sondern auch eine Anpassung bestehender Scripte und alter Tests notwendig ist. Wie auch schon bei ESLint gibt es ein Paket, was den Umstieg bis auf die Aktualisierung der Tests selber automatisch durchführen kann. Da im Kontext dieses Projekts bei der Ausführung noch keine speziellen Tests entstanden sein können, kann diese Aufgabe hier durch ein schlichtes Austauschen von festgelegten, vorgefertigten Dateien erledigt werden.
+
+Die Installation von Cypress ist vergleichsweise zwar simpel und benötigt lediglich das Installieren neuer \gls{npm}-Pakete, das erstellen eines Scripts in der package.json-Datei und das Erzeugen neuer Dateien. Dieser Prozess kann im Kontext von Vue sogar von der initialen Projekterstellung abgenommen werden und auch in Angular-Applikationen kann er mithilfe eines \gls{npm}-Pakets automatisiert werden. Allerdings ergibt sich in genau der Kombination (d.h. in Angular-Projekten) eine Komplikation, wenn auch Jest installiert wurde. Dieses Problem lässt sich durch Modifikation der jest.config.js-Datei beheben \cite{angular_jest_cypress_issue}.
+
+Da das Schreiben von Test sowohl für Jest als auch für Cypress sowohl in JavaScript als auch in TypeScript erfolgen kann, sollten die automatisch eingerichteten Tests in derjenigen der beiden Sprachen sein, die auch für den Produktivcode verwendet wird. Es ist also bei der Installation notwendig zu wissen, ob TypeScript verwendet wird oder nicht.
+
+Eine letzte Besonderheit ergibt sich bei der Installation von Husky und lint-staged. Hier sind zwar ähnliche Schritte wie bei anderen Tools notwendig, aber zusätzlich wird hier eine Liste von Befehlen bzw. Scripten benötigt, die vor bestimmten Git-Prozessen ausgeführt werden sollen.
+
+Zusammenfassend ist für die Installation von Tools also eine Kenntnis über die Verwendung von TypeScript nötig. Es muss auch bekannt sein, ob unter den anderen ausgewählten Werkzeugen solche dabei sind, die vor Git-Prozessen ausgeführt werden sollen. Darüber hinaus ist die Installation von \gls{npm}-Paketen sowie die Modifikation einiger Dateien notwendig. Diese Dateien sind entweder im \gls{JSON}-Format oder sind JavaScript- / TypeScript-Dateien. Außerdem muss es möglich sein, neue Dateien mit vorbestimmtem Inhalt zu erzeugen, der sich an den JavaScript-Dialekt anpassen können muss.
 
 \subsection{Wahl des generellen Vorgehens}
 \subsection{Planung der Erweiterungen}
