@@ -1,4 +1,4 @@
-\RequirePackage[dvipsnames]{xcolor} % Change font colors
+\RequirePackage[dvipsnames,svgnames]{xcolor} % Change font colors
 \documentclass[%
   ngerman,        % (ngerman/english) internationalisation
 %  listoffigures,  % optional listings of figures, tables and listings
@@ -8,6 +8,19 @@
 ]{iib_thesis}
 
 \newcommand{\missingQuote}{\textcolor{red}{\underline{\textbf{\uppercase{zitat fehlt}}}}}
+
+% Add `diff` language for lstlisting
+  \definecolor{diffstart}{named}{Grey}
+  \definecolor{diffincl}{named}{Green}
+  \definecolor{diffrem}{named}{OrangeRed}
+
+  \lstdefinelanguage{diff}{
+    basicstyle=\ttfamily\small,
+    morecomment=[f][\color{diffstart}]{@@},
+    morecomment=[f][\color{diffincl}]{+\ },
+    morecomment=[f][\color{diffrem}]{-\ },
+    numbers=left,
+  }
 
 \title{Entwicklung eines erweiterbaren Kommandozeileninterfaces zur Generierung von Web-Applikationen}
 \author{Michael David Kuckuk}

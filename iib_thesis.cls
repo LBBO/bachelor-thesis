@@ -43,6 +43,7 @@
 \bibliographystyle{abbrvnat}            % abbreviated author names
 \RequirePackage[acronym,nomain]{glossaries} % acronyms via \newacronym and \gls
 
+
 %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %% %%
 
 %% title information
