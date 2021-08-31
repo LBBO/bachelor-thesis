@@ -268,3 +268,33 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{GWA}{}%
+{%
+\gls@defglossaryentry{GWA}%
+{%
+name={GWA},%
+sort={GWA},%
+type={acronym},%
+first={generate-web-app\glsspace (GWA)},%
+firstplural={generate-web-apps\glsspace (GWAs)},%
+text={GWA},%
+plural={GWAs},%
+description={generate-web-app},%
+descriptionplural={generate-web-app\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={generate-web-app},%
+longplural={generate-web-apps},%
+short={GWA},%
+shortplural={GWAs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
