@@ -239,3 +239,12 @@ Nach der initialen Auswahl der Erweiterungen muss jede der ausgewählten Erweite
 Um die eigentliche Installation zu ermöglichen, muss es eine Methode geben, die genau diesen Schritt ausführt. Als Eingabe benötigt sie eine Liste aller ausgewählten Erweiterungen sowie deren Einstellungen (damit vor allem Frameworks die Mitinstallation anderer Bibliotheken oder Werkzeuge gemäß den angegebenen Präferenzen vornehmen können). Außerdem müssen auch sonstige über das Projekt bekannte Daten (z.B. der gewünschte Name des Projektes) übergeben werden (diese sind z.B. auch für die initiale Einrichtung des Frameworks erforderlich).
 
 Anschließend kann es hilfreich sein, wenn abschließende Hilfsinformationen für Nutzende ausgegeben werden können, damit die nächsten Schritte mit einer Bibliothek oder einem Werkzeug erläutert werden können. Hierfür kann deshalb eine zusätzliche Methode angegeben werden, die als Parameter dieselben Daten wie die Installationsfunktion übergeben bekommt, um denselben Informationsstand zu haben und Aussagen über die durchgeführte Installation treffen zu können.
+
+\subsection{Zu verwendende Technologien}
+Aufgrund dessen, dass im Rahmen von \gls{GWA} JavaScript-Projekte eingerichtet werden sollen, die auf \gls{npm}-Projekten aufbauen sollen, ist es sinnvoll, auch dieses Projekt innerhalb des \gls{npm}-Ökosystems aufzubauen. Somit können Entwickelnde, die eine Bibliothek oder ein Werkzeug erstellt haben, in derselben Programmiersprache auch an \gls{GWA} mitarbeiten, wodurch die Pflege des \gls{CLI}s erleichtert werden könnte.
+
+Als primäre Programmiersprache wird anstelle von reinem JavaScript TypeScript zum Einsatz kommen. Die dadurch gewonnene Typsicherheit ist insbesondere aufgrund dessen nützlich, dass neue Entwickelnde beim Einstieg in den Projekt leichter sehen können, an welcher Stelle welche Daten vorliegen.
+
+Zur Durchführung des Dialogs (d.h. zum Stellen von Fragen und zur Darstellung von Informationen) werden inquirer\footnote{\url{https://www.npmjs.com/package/inquirer}} und chalk\footnote{\url{https://www.npmjs.com/package/chalk}} verwendet.
+
+Prettier, inquirer, rxjs, chalk, jest, github
