@@ -238,3 +238,63 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{VM}{}%
+{%
+\gls@defglossaryentry{VM}%
+{%
+name={VM},%
+sort={VM},%
+type={acronym},%
+first={Virtuelle Maschine\glsspace (VM)},%
+firstplural={Virtuelle Maschines\glsspace (VMs)},%
+text={VM},%
+plural={VMs},%
+description={Virtuelle Maschine},%
+descriptionplural={Virtuelle Maschine\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Virtuelle Maschine},%
+longplural={Virtuelle Maschines},%
+short={VM},%
+shortplural={VMs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{TDD}{}%
+{%
+\gls@defglossaryentry{TDD}%
+{%
+name={TDD},%
+sort={TDD},%
+type={acronym},%
+first={Test-driven Development\glsspace (TDD)},%
+firstplural={Test-driven Developments\glsspace (TDDs)},%
+text={TDD},%
+plural={TDDs},%
+description={Test-driven Development},%
+descriptionplural={Test-driven Development\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Test-driven Development},%
+longplural={Test-driven Developments},%
+short={TDD},%
+shortplural={TDDs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
