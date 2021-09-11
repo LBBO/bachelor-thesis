@@ -58,66 +58,6 @@ parent={},%
 %
 }%
 }%
-\ifglsentryexists{TS}{}%
-{%
-\gls@defglossaryentry{TS}%
-{%
-name={TS},%
-sort={TS},%
-type={acronym},%
-first={TypeScript\glsspace (TS)},%
-firstplural={TypeScripts\glsspace (TSs)},%
-text={TS},%
-plural={TSs},%
-description={TypeScript},%
-descriptionplural={TypeScript\acrpluralsuffix },%
-symbol={\relax },%
-symbolplural={\relax },%
-user1={},%
-user2={},%
-user3={},%
-user4={},%
-user5={},%
-user6={},%
-long={TypeScript},%
-longplural={TypeScripts},%
-short={TS},%
-shortplural={TSs},%
-counter={page},%
-parent={},%
-%
-}%
-}%
-\ifglsentryexists{JS}{}%
-{%
-\gls@defglossaryentry{JS}%
-{%
-name={JS},%
-sort={JS},%
-type={acronym},%
-first={JavaScript\glsspace (JS)},%
-firstplural={JavaScripts\glsspace (JSs)},%
-text={JS},%
-plural={JSs},%
-description={JavaScript},%
-descriptionplural={JavaScript\acrpluralsuffix },%
-symbol={\relax },%
-symbolplural={\relax },%
-user1={},%
-user2={},%
-user3={},%
-user4={},%
-user5={},%
-user6={},%
-long={JavaScript},%
-longplural={JavaScripts},%
-short={JS},%
-shortplural={JSs},%
-counter={page},%
-parent={},%
-%
-}%
-}%
 \ifglsentryexists{npm}{}%
 {%
 \gls@defglossaryentry{npm}%
