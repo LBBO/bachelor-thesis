@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TexmakerSession quickmode="3">
-    <document file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/konzeptionierung.tex" bookmark3="0" hasfocus="true" line="4" bookmark2="0" bookmark1="0" master="false"/>
-    <document file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/section_1.tex" bookmark3="0" hasfocus="false" line="0" bookmark2="0" bookmark1="0" master="false"/>
-    <document file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/iib_thesis.cls" bookmark3="0" hasfocus="false" line="0" bookmark2="0" bookmark1="0" master="false"/>
-    <document file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\stand_der_technik.tex" bookmark3="0" hasfocus="false" line="100" bookmark2="0" bookmark1="0" master="false"/>
-    <document file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\my_thesis.tex" bookmark3="0" hasfocus="false" line="32" bookmark2="0" bookmark1="0" master="true"/>
-    <document file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\acronyms.tex" bookmark3="0" hasfocus="false" line="0" bookmark2="0" bookmark1="0" master="false"/>
-    <document file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\my_bibliography.bib" bookmark3="0" hasfocus="false" line="58" bookmark2="0" bookmark1="0" master="false"/>
-    <document file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/intro.tex" bookmark3="0" hasfocus="false" line="0" bookmark2="0" bookmark1="0" master="false"/>
-    <document file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/implementierung.tex" bookmark3="0" hasfocus="false" line="11" bookmark2="0" bookmark1="0" master="false"/>
+    <document line="10" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\acronyms.tex"/>
+    <document line="210" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/iib_thesis.cls"/>
+    <document line="47" bookmark2="0" bookmark1="0" hasfocus="false" master="true" bookmark3="0" file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\my_thesis.tex"/>
+    <document line="0" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/intro.tex"/>
+    <document line="247" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/implementierung.tex"/>
+    <document line="142" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/konzeptionierung.tex"/>
+    <document line="109" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\stand_der_technik.tex"/>
+    <document line="140" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:\Users\mdk\Desktop\bachelor\bachelor-thesis\my_bibliography.bib"/>
+    <document line="14" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/section_1.tex"/>
+    <document line="1" bookmark2="0" bookmark1="0" hasfocus="false" master="false" bookmark3="0" file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/evaluierung.tex"/>
+    <document line="0" bookmark2="0" bookmark1="0" hasfocus="true" master="false" bookmark3="0" file="C:/Users/mdk/Desktop/bachelor/bachelor-thesis/further_research.tex"/>
 </TexmakerSession>

@@ -227,5 +227,29 @@ Alternativ kann die Abhängigkeit der Typdefinitionen von inquirer aktualisiert 
 
 Während diese Überprüfung stattfand, konnte das Problem mit dem ersten Lösungsansatz umgangen werden. Seit der am 6. September 2021 veröffentlichten Version 8.1.0 der Typdefinitionen von inquirer ist das Problem jedoch gänzlich gelöst.
 
-\subsubsection{Betriebssystemspezifische Probleme}
-\subsection{Testgetriebene Entwicklung}
+% TODO: vielleicht anderen begriff finden?
+\subsubsection{Umgebungsbasierte Probleme}
+Im Rahmen der meisten Installationsprozesse müssen verschiedene npm-Pakete als Befehle ausgeführt werden. Beispielsweise wird zum Installieren von React der Befehl \verb/npx create-react-app <Projektname>/ ausgeführt. Hierfür wird die Node.js-interne Bibliothek \verb/child_process/ verwendet. Diese ermöglicht das Erzeugen und überwachen von neuen Prozessen.
+
+In Unix-basierten Betriebssystemen wie Linux oder macOS lässt sich mit dieser Bibliothek problemlos der beispielhaft genannte Befehl \verb/npx create-react-app <Projektname>/ ausführen. Auf einem Windows-Computer hingegen führt der Aufruf zu einem Fehler.
+
+Das durch diesen Befehl aufgerufene Programm \verb/npx/ kann in Unix-basierten Betriebssystemen direkt in einem neuen Prozess gestartet werden. Es liegt in Form einer JavaScript-Datei vor, an deren Beginn deklariert wird, dass diese von Node.js ausgeführt werden muss. Ist Node.js installiert, so geschieht dies automatisch.
+
+Auf Windows-Computern wird \verb/npx/ jedoch als \verb/.cmd/-Datei installiert. Diese sind in Windows nicht direkt in einem Prozess ausführbar, sondern können nur von der Kommandozeile (der CMD) ausgeführt werden \cite{windows_spawn_cmd}. Es muss also zunächst in einem neuen Prozess die CMD aufgerufen werden, damit diese dann \verb/npx/ ausführen kann.
+
+Aufgrund dessen, dass die Entwicklung ausschließlich in einer Unix-basierten Umgebung\footnote{Es wurde zwar ein Windows-Computer genutzt, auf dem aber Windows Subsystem for Linux (\url{https://docs.microsoft.com/en-us/windows/wsl/about}) installiert war. Die Entwicklung hat ausschließlich in einer damit eingerichteten Virtuellen Maschine mit Ubuntu stattgefunden.} stattfand, ist dieser Fehler nur aufgefallen, als Dritte \gls{GWA} auf eigenen Computern getestet haben. Daraufhin wurde darauf geachtet, \gls{GWA} sowohl in Unix-basierten Umgebungen als auch auf einem Windows-System ausgiebig zu testen, wobei weitere leicht zu lösende Probleme (wie die Verwendung falscher Trennzeichen für Ordnerstrukturen) aufgefallen sind.
+
+Durch die Verwendung anderer Werkzeuge (wie der Framework-spezifischen \gls{CLI}s) zur Installation bestimmter Bibliotheken kann es geschehen, dass auf einem Computer vorinstallierte Versionen dieser Werkzeuge einen Einfluss auf die Ausführung von \gls{GWA} haben. Solche Einflüsse müssen ausgeschlossen werden, um ein einheitliches Verhalten des Programms gewährleisten zu können.
+
+Außerdem muss natürlich sichergestellt werden, dass diese Abhängigkeiten auch dann verwendbar sind, wenn Nutzende sie nicht zuvor installiert haben. Da viele dieser Werkzeuge im Rahmen der Konzeptionierung installiert werden mussten, fällt es im Rahmen der Entwicklung nicht auf, wenn diese Installation nicht stattfindet sondern die Abhängigkeit fälschlicherweise als bereits installiert vorausgesetzt wird.
+
+Um derartige Probleme auch während der Entwicklung feststellen zu können, lässt sich eine \gls{VM} erzeugen, auf der \gls{GWA} ausgeführt wird. Zum Erzeugen solcher \gls{VM}s wird Docker verwendet, da so mit einer Konfigurationsdatei festgelegt werden kann, welche Abhängigkeiten vor der Ausführung von \gls{GWA} bereits installiert sein sollen und welche nicht. Dieser Ansatz wird im Rahmen der Evaluierung (Kapitel \ref{eval}) ausführlicher erläutert, aber bereits während der Entwicklung konnten auf diese Weise fehlende Abhängigkeitsinstallationen entdeckt werden.
+
+\subsection{Vorgehen nach TDD}
+Da ermöglicht werden soll, dass andere Entwickelnde an \gls{GWA} mitarbeiten können sollen, ist es hilfreich, möglichst viel Funktionalität durch automatisierte Tests abzudecken. So können an beliebigen Stellen Änderungen vorgenommen werden und auch, wenn Entwickelnde keinen Überblick über den vollständigen Funktionsumfang haben, können sie durch Ausführung der Tests mit großer Zuversicht feststellen, ob sie bereits existierende Funktionalität versehentlich verändert oder ausgebaut haben.
+
+Um eine solche hohe Testabdeckung zu erreichen, wurde zu großen Teilen nach \gls{TDD} vorgegangen (siehe Kapitel \ref{state_of_the_art:tdd}). Insgesamt wurden 174 Tests geschrieben, die 89,18\% des Codes abdecken.
+
+Wie diese Abdeckungsrate zeigt, wurde an einigen Stellen von \gls{TDD} abgewichen. Dies ist insbesondere an Stellen der Installation geschehen, wo andere Werkzeuge aufgerufen werden um Dateien zu erzeugen oder zu modifizieren. Zwar können diese Aufrufe abgefangen werden, aber ohne die tatsächliche Durchführung dieser Abhängigkeiten ist nicht überprüfbar, ob die Aufrufe tatsächlich den gewünschten Effekt haben würden.
+
+Im Rahmen von Ende-zu-Ende-Tests wäre es möglich, diese Abhängigkeiten auszuführen und am Ende einer kompletten Installation zu prüfen, ob diese wie gewünscht abgelaufen ist. Da Ende-zu-Ende-Tests im Kontext von \gls{GWA} jedoch Änderungen am Dateisystem vornehmen würden, wurde zunächst auf sie verzichtet. Ihre Ausführung wäre im Rahmen von \gls{VM}s problemlos möglich; jedoch hätte die Implementierung solcher Tests eine für den Rahmen dieser Arbeit zu hohe Komplexität gehabt. Auf die Ergänzung solcher Tests wird im Rahmen der weiteren Forschungsmöglichkeiten in Kapitel \ref{further_research} eingegangen.
