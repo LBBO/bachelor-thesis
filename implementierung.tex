@@ -111,7 +111,7 @@ Mit den vorgegebenen Optionen werden dann, sofern notwendig, weitere allgemeine 
 Als letzten Schritt des Dialogs sind dann weitere Fragen der einzelnen Erweiterungen zu stellen. Auch diese können bereits beantwortet worden sein und werden ggf. übersprungen.
 
 \subsection{Analyse der CLI-Argumente}
-Mithilfe der bereits erwähnten Bibliothek \glqq commander\grqq können die \gls{CLI}-Argumente mit sehr geringem Aufwand eingelesen und in gewissem Rahmen validiert werden. Dazu ist es notwendig, alle möglichen Argumente und ggf. die Typen der erwarteten zugehörigen Werte zu deklarieren.
+Mithilfe der bereits erwähnten Bibliothek \glqq commander\grqq\ können die \gls{CLI}-Argumente mit sehr geringem Aufwand eingelesen und in gewissem Rahmen validiert werden. Dazu ist es notwendig, alle möglichen Argumente und ggf. die Typen der erwarteten zugehörigen Werte zu deklarieren.
 
 Für die Angabe eines bool'schen Wertes reicht dann ein Parameter ohne zugehörigen Wert (z.B. \verb|--use-some-library|), während Angabe einer Wahl von bestimmten Optionen zusätzlich die Angabe eines Wertes benötigt (z.B. \verb|--package-manager npm|). Commander erzeugt bei der anschließenden Analyse der beim Befehlsaufruf übergebenen Argumente ein Objekt, bei dem jedem angegebenen Argument der entsprechende Wert (oder, falls kein Wert angegeben wurde, der bool'sche Wert \verb|true|) zugewiesen ist. Wenn eine Option beim Befehlsaufruf nicht angegeben wurde, so wird sie in das ausgegebene Objekt nicht aufgenommen.
 
@@ -161,7 +161,7 @@ Im Anschluss an alle Installationen haben Erweiterungen die Möglichkeit durch e
 \label{impl:determine_installation_order}
 Wie bereits in der Konzeptionierung erläutert wurde, muss es möglich sein, die Installationsreihenfolge der Erweiterungen festzulegen. Dabei ist nicht die Festlegbarkeit der gesamten Reihenfolge relevant, sondern es müssen lediglich gewisse Bedingungen eingehalten werden.
 
-Beispielsweise muss das Framework zuerst installiert werden, da es die notwendige Ordnerstruktur erzeugt. Die Installation von husky und ESLint sollte sehr spät erfolgen, damit alle im Projekt existierenden Dateiendungen bei entsprechenden Skripten berücksichtigt werden können. Dies sind also zwei Beispiele für \glqq globale\grqq Bedingungen die von einer Erweiterung an den gesamten Kontext gestellt werden.
+Beispielsweise muss das Framework zuerst installiert werden, da es die notwendige Ordnerstruktur erzeugt. Die Installation von husky und ESLint sollte sehr spät erfolgen, damit alle im Projekt existierenden Dateiendungen bei entsprechenden Skripten berücksichtigt werden können. Dies sind also zwei Beispiele für \glqq globale\grqq\ Bedingungen die von einer Erweiterung an den gesamten Kontext gestellt werden.
 
 Es gibt aber auch eine weitere Art von Bedingung, bei der eine Erweiterung nicht vor einer anderen Erweiterung installiert werden darf. Ein solches Beispiel ist, dass husky nach Prettier und ESLint installiert werden muss, da sonst bei den durch husky eingerichteten Automatisierungen die anderen Werkzeuge nicht einbezogen werden. Dieses Konzept ähnelt dem der Abhängigkeiten, kann jedoch ausdrücklich nicht durch die bereits existierenden Abhängigkeiten zwischen Erweiterungen abgebildet werden. Sonst müsste beispielsweise TypeScript vor Angular installiert werden, da Angular von TypeScript abhängig ist. Dies ist jedoch nicht möglich, da (wie bereits erläutert) Frameworks als allererstes installiert werden müssen.
 
