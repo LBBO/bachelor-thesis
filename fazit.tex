@@ -1,0 +1,16 @@
+\section{Fazit}
+\label{fazit}
+
+Im Rahmen dieser Arbeit sollte ein \gls{CLI} namens \glqq generate-web-app\grqq\ (\gls{GWA}) entwickelt werden, das Programmierenden die initiale Einrichtung von Webprojekten abnimmt. Der Fokus sollte Anfängerfreundlichkeit und Interaktivität liegen.
+
+Im Rahmen der Planung dieses \gls{CLI}s wurden die Installationsvorgänge verschiedener Bibliotheken und Werkzeuge miteinander verglichen, sodass Gemeinsamkeiten und Unterschiede hervorgehoben werden konnten. Außerdem wurde analysiert, welche Möglichkeiten zur Projektinitialisierung bereits existieren. Diese wurden ebenfalls miteinander verglichen und insbesondere auf ihre Stärken und Schwächen hin untersucht.
+
+Aus diesen Untersuchungen ergab sich der Plan, ein auf Erweiterungen basierendes System zu entwickeln, das zunächst allgemeine Fragen stellt und erfragt, welche Bibliotheken / Werkzeuge gewünscht sind. Zu dieser Auswahl werden dann weitere Fragen gestellt, bevor die Installation gemäß der angegebenen Wünsche erfolgt. Außerdem sollte eine Validierung der Antworten eingebaut werden.
+
+Dieses System konnte wie geplant implementiert werden. Dabei wurden neben allgemeinen Techniken wie der asymptotischen Laufzeitanalyse Ansätze aus der funktionalen Programmierung und Konzepte aus der Graphentheorie verwendet. Die Implementierung erfolgte mehrheitlich testgetrieben in TypeScript.
+
+Neben der Implementierung dieses Grundgerüstes wurden einige Erweiterungen entwickelt, um die Funktionalität des Grundgerüstes und die Fähigkeiten des Erweiterungssystems zu demonstrieren. Die bereits entwickelten Erweiterungen ermöglichen die Installation der beiden Frontend-Frameworks React und Angular, der beiden Werkzeuge TypeScript und ESLint, der CSS-Präprozessoren SCSS, Sass und Less, sowie der Bibliothek Redux.
+
+Durch die bei der testgetriebenen Entwicklung entstandenen Unittests und weitere automatisierte Ende-zu-Ende-Tests konnte die Funktionalität der bereits implementierten Features kontinuierlich überprüft werden. In Kombination mit weiteren manuellen Tests konnten bei keinem der erstellbaren Projekte Fehler festgestellt werden.
+
+Trotz der geringen Anzahl der bisher entwickelten Erweiterungen bietet \gls{GWA} bereits eine Zeitersparnis bei der Installation von unterstützten Konfigurationsmöglichkeiten. Somit kann das Ziel dieser Arbeit als erreicht betrachtet werden, obgleich noch weitere Arbeit notwendig ist, um \gls{GWA} zur Generierung mehr Projekte verwenden zu können.
