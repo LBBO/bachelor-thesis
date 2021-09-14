@@ -30,6 +30,8 @@ Diese Erweiterungen hätten sich von den implementierten Erweiterungen deutlich 
 
 Aufgrund der hohen Komplexität dieses Features und dem begrenzten, im Rahmen dieser Arbeit leistbaren Arbeitsumfangs wurde vorerst darauf verzichtet, Erweiterungen für automatische Tests umzusetzen. Diese Erweiterungen sind jedoch für die weitere Entwicklung von \gls{GWA} geplant und werden daher im Kapitel \ref{further_research} erneut thematisiert werden.
 
+Obwohl dies nicht explizit als Feature gewünscht wurde, wurde außerdem bei der Entwicklung sehr darauf geachtet, dass der Code von Dritten erweiterbar und veränderbar ist. Dies ist vor allem durch automatische Tests gewährleistet worden.
+
 \subsection{Sicherstellung der Funktionalität}
 Die Überprüfung der Korrektheit einiger Features, insbesondere der Installation von Erweiterungen, ist nur mit hohem Aufwand ausführlich möglich. Für jede Erweiterung müsste betrachtet werden, welche Installationsschritte sie durchführen soll. Häufige Schritte wie die Installation eines \gls{npm}-Pakets sind leicht zu überprüfen, aber bei außergewöhnlicheren Schritten wie der Ergänzung einer Komponente im Falle der Redux-Erweiterung müsste die erzeugte Applikation lokal gestartet werden und es müsste von Hand verifiziert werden, dass die Komponente eingefügt worden ist und über ihre erwartete Funktionalität verfügt.
 
