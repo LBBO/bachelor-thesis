@@ -5,16 +5,9 @@ Die Feststellung des Erfolgs der Implementierung erfolgt in zwei Schritten. Zun�
 \subsection{Evaluierung der umgesetzten Features}
 In Kapitel \ref{konz:all_features} ist eine vollständige Liste aller gewünschter Features erfasst worden. Diese umfasst vor allem Features, die für Nutzende von Interesse sind, erwähnt aber auch Aspekte der Erweiterbarkeit und Vorbereitung auf zukünftige Entwicklung. Im folgenden wird untersucht, ob all diese Ziele erreicht werden konnten.
 
-Das erste erwähnte Feature ist die interaktive und informative Auswahl von Bibliotheken und Werkzeugen. Wie in Abbildung \ref{fig:gwa_fragebogen} zu sehen ist, konnte ein Fragebogen umgesetzt werden, der genau diese Auswahl ermöglicht. Vorher und nachher sind weitere Fragen möglich, wobei bereits über \gls{CLI}-Argumente beantwortete Fragen nicht erneut gestellt werden, sodass die Konfiguration standardmäßig komplett interaktiv ist, aber auf Wunsch auch ohne jegliche Interaktion stattfinden kann.
+Das erste erwähnte Feature ist die interaktive und informative Auswahl von Bibliotheken und Werkzeugen. Es konnte ein Fragebogen umgesetzt werden, der genau eine solche Auswahl ermöglicht. Vor und nach dieser Selektion sind weitere Fragen möglich, wobei bereits über \gls{CLI}-Argumente beantwortete Fragen nicht erneut gestellt werden, sodass die Konfiguration standardmäßig komplett interaktiv ist, aber auf Wunsch auch ohne jegliche Interaktion stattfinden kann.
 
 Aufgrund der Typdefinition von Erweiterungen ist es unmöglich, eine Erweiterung zu \gls{GWA} hinzuzufügen, die nicht über grundlegende Metadaten verfügt, worunter insbesondere der Name der Erweiterung, ihre Beschreibung sowie ein Link zu weiteren Informationen zählen. Somit sind die Ziele der Interaktivität und der Informativität als erfüllt zu betrachten.
-
-\begin{figure}
-	\centering
-		\includegraphics[width=\linewidth]{gwa-dialog.png}
-	\caption{Bildschirmfoto von \gls{GWA}, nachdem der Projektname und Paketmanager festgelegt wurden. In der Aktuellen Frage ist eine Auswahl der gewünschten Bibliotheken / Werkzeuge zu treffen.}
-		\label{fig:gwa_fragebogen}
-  \end{figure}
 
 Bei der Umsetzung der Fragen war außerdem darauf zu achten, dass keine unzulässige Konfiguration auswählbar ist. Dieses Feature konnte umgesetzt werden, indem nach jeder Frage die gegebene Antwort überprüft und ggf. zurückgewiesen wird. Nutzende haben im Fall einer unzulässigen Antwort dann weiterhin die Möglichkeit, ihre Antwort zu bearbeiten.
 

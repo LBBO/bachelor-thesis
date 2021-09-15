@@ -22,6 +22,15 @@ Beispielsweise ist es im Rahmen der empfohlenen Installationsprozesse nicht mög
 
 Die Entscheidung eines Frameworks ist daher eine der ersten Entscheidungen, die Entwickelnde beim Einrichten ihrer Projekte treffen müssen. Sie schränkt die weitere Auswahl an Werkzeugen und Bibliotheken ein. Außerdem können, bis auf in besonderen Kontexten wie Micro-Frontends oder WebComponents \missingQuote, nur mit hohem Aufwand oder gar nicht zwei Frameworks zusammen verwendet werden.
 
+\subsection{Kommandozeileninterfaces}
+Die erste Art von Programmen, die auf Computern ausgeführt werden konnten, waren sogenannte Kommandozeileninterfaces (\gls{CLI}s). Über die Kommandozeile konnten diese Programme über ihren Namen bzw. ihren Speicherort aufgerufen werden, wobei zusätzliche Argumente übergeben werden konnten, um den Ablauf des Programms zu beeinflussen\cite{verma2013gracoli}.
+
+Diese Benutzweise birgt verschiedene Vor- und Nachteile. A priori bietet sie keine Entdeckbarkeit der Funktionalität. Erst durch die Einrichtung eines weiteren Befehls bzw. einer Konfigurationsoptionen kann Nutzenden eine Liste aller Nutzungsmöglichkeiten des Programms angezeigt werden. Nutzende müssen aber auch diesen Befehl kennen, um ihn ausführen zu können. Dafür lassen sich derartige Befehle sehr leicht automatisiert ausführen, da sie ohne weiteres in Skripte eingebunden werden können. Um eine automatische Ausführung grafischer Benutzungsoberflächen zu ermöglichen, müsste dahingegen die Benutzung einer Computermaus simuliert werden \cite{fellmann2007command}.
+
+Seit diesen Anfängen von \gls{CLI}s ist es jedoch möglich geworden, im Rahmen eines \gls{CLI}s weitere Nutzereingaben wie die Verwendung von Tastatur und Maus zu verarbeiten. So können Nutzerinteraktionen ermöglicht werden, die einer grafischen Benutzeroberfläche gleich kommen. Beispielsweise ist es möglich, in der Kommandozeile sich eine Weltkarte anzuzeigen, die mit Maus und Tastatur bedienbar ist \cite{mapscii}.
+
+Heutzutage bieten \gls{CLI}s daher den Vorteil, dass sie weiterhin leicht automatisierbar sind und dennoch Interaktivität und damit Entdeckbarkeit der Funktionen ermöglichen. Um derartige Interaktivität leichter umzusetzen, gibt es zahlreiche Bibliotheken.
+
 \subsection{Ähnliche Projektgeneratoren}
 Um das Problem der initialen Projektkonfiguration zu automatisieren oder zumindest zu erleichtern, bieten die drei oben erwähnten Frameworks jeweils ein Programm an, was zur initialen Erstellung von Projekten mit dem jeweiligen Framework empfohlen wird. Einige dieser Programme sind darüber hinaus in der Lage, auch nach der initialen Erstellung Änderungen am Code vorzunehmen. Diese Features sind jedoch für \gls{GWA} nicht geplant und werden daher nicht näher betrachtet.
 
@@ -37,14 +46,7 @@ Außerdem ist es bei der Verwendung dieser Templates mit geringem Aufwand mögli
 \subsubsection{Angular}
 Das Angular-Team stellt das sog. Angular-CLI zur Verfügung, das Entwickelnden beim Programmieren verschiedene wiederkehrende und repetitive Aufgaben abnehmen soll (wie z.B. die Erstellung und Einbindung neuer Komponenten). Neben diesen Aufgaben wird das Tool auch zur Erstellung neuer Angular-Projekte genutzt.
 
-Der Befehl ng new <project-name> führt Nutzende in einen Dialog, bei dem zwei Fragen zur gewünschten Konfiguration des Projektes gestellt werden. Über explizit gesetzte Kommandozeilenoptionen können dann insgesamt Features konfiguriert werden, mit denen das Projekt eingerichtet wird. Diese Features sind jedoch allesamt Angular-intern, d.h. es gibt keine Möglichkeit weitere Libraries oder ähnliches installieren zu lassen, die nicht direkt vom Angular Team kommen. Selbst einige Libraries (z.B. Angular Material), die vom Angular-Team direkt entwickelt werden, sind nicht in diese initiale Projektgenerierung eingebunden.
-
-  \begin{figure}
-	\centering
-		\includegraphics[width=\linewidth]{angular-cli-example.png}
-	\caption{Die Ausgabe des Angular CLI's bei der Erzeugung eines neuen Projektes.}
-		\label{fig:basics:angular_cli_example}
-  \end{figure}
+Der Befehl ng new <project-name> führt Nutzende in einen Dialog, bei dem zwei Fragen zur gewünschten Konfiguration des Projektes gestellt werden. Über explizit gesetzte Kommandozeilenoptionen können dann insgesamt Features konfiguriert werden, mit denen das Projekt eingerichtet wird. Diese Features sind jedoch allesamt Angular-intern, d.h. es gibt keine Möglichkeit weitere Libraries oder ähnliches installieren zu lassen, die nicht direkt vom Angular Team kommen. Selbst einige Libraries (z.B. Angular Material), die vom Angular-Team direkt entwickelt werden, sind nicht in diese initiale Projektgenerierung eingebunden. Eine Ausnahme hiervon bildet die Auswählbarkeit der CSS-Präprozessoren SCSS, Sass und Less.
 
 Im Gegensatz zu CRA sind hier die Möglichkeiten, die Nutzenden bei der initialen Projekterstellung geboten werden, sehr eingeschränkt. Es gibt die Möglichkeit, bei der Einrichtung eine sogenannte \glqq Collection\grqq\ anzugeben, die dann die Erstellung des eigentlichen Projektes übernimmt. Es könnte also eine Collection entwickelt werden, die weitere Libraries je nach Eingabe einbindet. Jedoch scheint die Umsetzung dieses Features abzunehmen: von den überprüften Collections für ESLint, Prettier und Apollo-Angular hat nur eine dieses Feature (also die Installation bei der Initialisierung statt hinterher) jemals unterstützt, hat es aber mittlerweile wieder eingestellt \cite{angular_eslint_collection_issue} \cite{prettier_angular_collection_file} \cite{apollo_angular_collection_file}.
 
@@ -54,21 +56,9 @@ Im Gegensatz zu der React-Lösung können sich Nutzende hier (im Rahmen der besc
 \subsubsection{Vue}
 Von den drei Frameworks bietet Vue in Bezug auf die Projekterstellung das umfangreichste CLI. Zu aller erst besteht die Möglichkeit, ein Preset auszuwählen. Dies kann eines von zwei Standardpresets sein oder eines, was zuvor auf dem lokalen Computer erstellt und gespeichert wurde. Es ist auch möglich, ein bereits existierendes Preset oder ein komplett neues Preset als Kommandozeilenparameter anzugeben.
 
-Falls man kein Preset auswählt, trifft man nun zunächst eine Vorauswahl von zehn Features, die man haben oder nicht haben möchte. Daraufhin werden zu den ausgewählten Features detailliertere Fragen gestellt. Insgesamt stehen einem durch dieses Tool über 20 verschiedene Libraries ohne weiteren Konfigurationsaufwand zur Verfügung. Die soeben erstellte Konfiguration kann anschließend als neues Preset gespeichert werden.
+Falls kein Preset ausgewählt wird, ist zunächst im Rahmen einer Multiple-Choice-Frage eine Vorauswahl von zehn Features zu treffen, die installiert werden sollen nicht installiert werden sollen. Daraufhin werden zu den ausgewählten Features detailliertere Fragen gestellt. Insgesamt stehen durch dieses Tool über 20 verschiedene Bibliotheken bzw. Libraries ohne weiteren Konfigurationsaufwand zur Verfügung. Die soeben erstellte Konfiguration kann anschließend als neues Preset gespeichert werden.
 
-  \begin{figure}
-		\centering
-		\begin{subfigure}[a]{0.4\linewidth}
-			\includegraphics[width=\linewidth]{vue-cli-feature-picker.png}
-      		\caption{Das Vue CLI fragt explizit nach zehn verschiedenen Features. Davon kann eine beliebige Teilmenge ausgewählt werden.}
-		\end{subfigure}
-		\begin{subfigure}[a]{0.4\linewidth}
-			\includegraphics[width=\linewidth]{vue-cli-more-questions.png}
-      		\caption{Für jede der Auserwählten Erweiterungen werden Detailliertere Fragen gestellt.}
-		\end{subfigure}
-		\caption{Zwei Bilder von dem Prozess der Erstellung einer neuen Vue-Applikation.}
-		\label{fig:basics:vue_cli_example}
-  \end{figure}
+Wie im Angular-\gls{CLI} können auch hier CSS-Präprozessoren und ein Framework-spezifischer Router in das Projekt eingebunden werden. Darüber hinaus besteht jedoch eine Auswahl aus verschiedenen Werkzeugen zur statischen Codeanalyse, verschiedenen Bibliotheken und Werkzeugen sowohl für Unit- als auch für Ende-zu-Ende-Tests und weiteren vereinzelten Bibliotheken und Features.
 
 %\subsubsection{Vergleich der Möglichkeiten zwischen Frameworks}
 %Alle drei Tools bieten Entwickelnden die Möglichkeit, eigene Erweiterungen zu erarbeiten und zu veröffentlichen. Im Falle von React muss dies in Form eines Templates geschehen. Da nur ein Template zur Erstellung eines Projektes genutzt werden kann, sind derartige Erweiterungen hier also exklusiv.
@@ -108,7 +98,7 @@ Falls man kein Preset auswählt, trifft man nun zunächst eine Vorauswahl von ze
 
 \subsection{Testgetriebene Entwicklung}
 \label{state_of_the_art:tdd}
-Der Begriff der Testgetriebenen Entwicklung, im Englischen auch \gls{TDD} genannt, bezeichnet ein bestimmtes Vorgehen beim Programmieren, das zu zuverlässigerem Code führen soll, als er sonst entstehen würde, und dazu beitragen soll, dass weniger ungebrauchter Code geschrieben wird \cite{tdd_beck}.
+Der Begriff der Testgetriebenen Entwicklung, im Englischen auch \gls{TDD} genannt, bezeichnet ein bestimmtes Vorgehen beim Programmieren, das zu zuverlässigerem Code führen soll und das dazu beitragen soll, dass weniger ungebrauchter Code geschrieben wird \cite{tdd_beck}.
 
 Während der Entwicklung werden wiederholt drei Phasen durchlaufen. Zunächst wird ein automatisierter Test geschrieben, der eine noch nicht implementierte Funktionalität testet. Diese erste Phase wird erst beendet, wenn der Test fehlschlägt. So wird garantiert, dass der Test nicht versehentlich immer funktioniert (z.B. weil er versehentlich eine andere, bereits implementierte Funktionalität testet).
 
