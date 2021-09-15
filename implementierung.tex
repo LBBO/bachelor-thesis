@@ -3,6 +3,8 @@
 
 Der Fokus der Implementierung liegt darauf, eine Ausreichende Infrastruktur zu schaffen, damit die Implementierung einzelner Erweiterungen keine neuen Herausforderungen aufweist, sofern sie zur Installation keine Schritte erfordern, die in der Konzeptionierung nicht berücksichtigt wurden. Die Implementierung einzelner Erweiterungen geschieht also nur exemplarisch um die Funktionalität des Grundgerüsts und des Ansatzes zu demonstrieren.
 
+Sämtliche Funktionalität wird in TypeScript implementiert, sofern dies nicht aus bestimmten Gründen anders notwendig ist. Es wird, wo möglich Funktionale Programmierung eingesetzt, um die Testbarkeit des Codes zu erleichtern. Da \gls{GWA} unabdingbar über Seiteneffekte verfügen muss, um die gewünschten Projekte erzeugen zu können, ist ein reines Vorgehen nach Funktionaler Programmierung nicht möglich. Zudem soll testgetrieben entwickelt werden.
+
 \subsection{Umsetzung von Erweiterungen im Allgemeinen}
 Bei der Definition von und dem Umgang mit Erweiterungen sind einige allgemeine Probleme erschienen, die unabhängig von der konkreten Erweiterung waren. In diesem Unterkapitel wird auf diese Probleme eingegangen und es wird jeweils erläutert, wie sie gelöst werden konnten.
 
