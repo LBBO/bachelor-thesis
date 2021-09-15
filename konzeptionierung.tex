@@ -98,80 +98,9 @@ Auch bei der Installation von Bibliotheken gibt es viele Gemeinsamkeiten, aber h
 
 Ein gutes Beispiel hierfür ist die Installation von paper.js. Da es sich hier nur um eine spezielle Bibliothek handelt, ist sie die einzige, die in keinem Framework vorinstallierbar ist, und eignet sich daher besonders gut für diesen Vergleich. Zur sinnvollen Benutzung von paper.js ist es notwendig, einen Canvas auf der Webseite anzuzeigen. Sobald dieser Canvas existiert, kann paper.js initialisiert werden und etwas auf dem Canvas zeichnen (zu Demonstrationszwecken genügt ein einfaches Rechteck).
 
-Hierfür lässt sich in allen drei Frameworks eine Komponente schreiben, die dann in die Hauptkomponente eingebettet werden muss. Die dafür erforderlichen Dateiveränderungen sind jedoch sehr verschieden, was am Beispiel von Vue in Listing \ref{code:vue:use_component} dargestellt wird.
+Hierfür lässt sich in allen drei Frameworks eine Komponente schreiben, die dann in die Hauptkomponente eingebettet werden muss. Die dafür erforderlichen Dateiveränderungen sind jedoch sehr verschieden.
 
-%\begin{lstlisting}[caption={Die zu ändernden Zeilen um eine neue Komponente in React einzubinden.}, captionpos=b, language=diff, label={code:react:use_component}]
-%  // src/App.tsx
-%  import React from 'react'
-%+ import { PaperJsExample } from './PaperJsExample'
-%  // ...
-%
-%  function App() {
-%    return (
-%      <div className="App">
-%        <header className="App-header">
-%          {/* ... */}
-%        
-%+         <PaperJsExample />
-%        
-%          {/* ... */}
-%        </header>
-%      </div>
-%    )
-%  }
-%
-%export default App
-%\end{lstlisting}
-%
-%\begin{lstlisting}[caption={Die notwendigen Änderungen um dasselbe in Angular zu erreichen.}, captionpos=b, language=diff, label={code:angular:use_component}]
-%  <!-- app.component.html -->
-%  
-%  <!-- ... -->
-%  
-%  <div class="content" role="main">
-%  
-%    <!-- ... -->
-%  
-%+   <app-paper-js-example></app-paper-js-example>
-%  
-%    <!-- ... -->
-%  </div>
-%  
-%  <!-- ... -->
-%\end{lstlisting}
-
-\begin{lstlisting}[caption={In Vue notwendige Änderungen, um eine Komponente hinzuzufügen}, captionpos=b, language=diff, label={code:vue:use_component}]
-  // HelloWorld.vue
-  <template>
-    <div class="hello">
-      <!-- ... -->
-      
-+     <PaperJsExample />
-      
-      <h3>Installed CLI Plugins</h3>
-      <!-- ... -->
-    </div>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent } from "vue";
-+ import PaperJsExample from "@/components/PaperJsExample.vue";
-  
-  export default defineComponent({
-    name: "HelloWorld",
-    props: {
-      msg: String,
-    },
-+   components: {
-+     PaperJsExample,
-+   },
-  });
-  </script>
-  
-  <!-- ... -->
-\end{lstlisting}
-
-Wie man hier sieht, muss die zu verwendende Komponente zum einen dort eingefügt werden, wo sie anschließend im \gls{DOM} erscheinen soll. Zum anderen muss sie im Script-Block importiert werden. Danach folgt eine Besonderheit von Vue: es muss deklariert werden, dass die Komponente verwendet werden wird (vgl. Zeilen 22 - 24 in Listing \ref{code:vue:use_component}). Dieses Attribut des Konfigurationsobjektes muss bei der ersten Komponente, die eingefügt werden soll, neu erzeugt werden, während es bei allen weiteren neuen Komponenten nur ergänzt werden muss.
+In Vue muss beispielsweise die zu verwendende Komponente einerseits dort eingefügt werden, wo sie anschließend im \gls{DOM} erscheinen soll. Andererseits muss sie im Script-Block importiert werden. Danach folgt eine Besonderheit von Vue, die in React und Angular nicht notwendig ist: es muss deklariert werden, dass die Komponente verwendet werden wird (vgl. Zeilen 22 - 24 in Listing \ref{code:vue:use_component}). Dieses Attribut des Konfigurationsobjektes muss bei der ersten Komponente, die eingefügt werden soll, neu erzeugt werden, während es bei allen weiteren neuen Komponenten nur ergänzt werden muss.
 
 Dieses eine Codebeispiel zeigt bereits, dass es schon für simple Installationen von Bibliotheken notwendig ist, framework-spezifischen Code modifizieren zu können. Hierfür wäre es hilfreich, ein tiefes Verständnis des zu modifizierenden Codes zu haben. Da aber die Struktur des vorher existierenden Codes bekannt ist (unter der Annahme, dass sich die initialen Setups nicht auf relevante Art und Weise verändern werden) und da die vorzunehmenden Änderungen sich innerhalb eines Frameworks immer ähneln, kann diese geringe Menge von Änderungen bzw. Änderungsarten auch ohne ein solches tiefes Verständnis umgesetzt werden. Genauer wird hierauf in Kapitel \ref{implementierung} eingegangen.
 
