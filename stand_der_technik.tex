@@ -95,6 +95,23 @@ Wie im Angular-\gls{CLI} können auch hier CSS-Präprozessoren und ein Framework
 %Außerdem bieten alle drei der genannten Tools keine Unterstützung für andere Frameworks. Daher ist beispielsweise der große Umfang der Features des Vue CLI‘s leider nicht in einem Angular-Projekt nutzbar.
 
 \subsection{Funktionale Programmierung}
+Die Funktionale Programmierung ist ein Programmierparadigma, das ursprünglich der Mathematik entstammt. Wie der Name vermuten lässt, basiert in der funktionalen Programmierung alles auf Funktionen. Diese unterschieden sich jedoch von dem Begriff einer Funktion, der sonst in der Informatik geläufig ist.
+
+Die Funktionale Programmierung versteht Funktionen in einem eher mathematischen Sinne. Eine Funktion bestimmt also basierend auf bestimmten Eingaben bestimmte Ausgaben. Wichtig ist hierbei, dass bei gleicher Eingabe die Ausgabe auch stets gleich ist. Außerdem darf die Funktion keine Seiteneffekte haben \cite{hinsen2009functional_programming}.
+
+Eine solche Funktion dürfte also beispielsweise keine Ausgabe an Nutzende ausführen, da dies ein Seiteneffekt wäre. Eine Funktion, die die aktuelle Uhrzeit zurückgibt, wäre ebenfalls keine Funktion in diesem Sinne, da sie bei gleichbleibenden Eingaben verschiedene Ausgaben erzeugen würde.
+
+An diesen Stellen unterscheidet sich die Funktionale Programmierung grundlegend von der Objektorientierten Programmierung. Ihr zugrunde liegen Klassen, die über Attribute und Methoden, also eine Art von Funktionen im klassischen, informatischen Sinne, verfügen. Eine Methode verändert in der Regel Attribute oder liest sie aus. Diese Methoden haben im allgemeinen nicht das Ziel, keine Seiteneffekte zu verursachen oder bei gleicher Eingabe immer die gleiche Ausgabe zu erzeugen.
+
+In der Funktionalen Programmierung wird auch auf weitere Konzepte, die aus der Objektorientierten Programmierung bekannt sind, verzichtet. So gibt es hier keine Variablen, die modifiziert werden können, sondern Funktionen können nur unveränderliche Parameter entgegennehmen und einen neuen Wert zurückgeben. Zudem wird auf Schleifen verzichtet; äquivalente Funktionalität kann jedoch durch Rekursion implementiert werden \cite{hinsen2009functional_programming}.
+
+Die Einschränkungen der Funktionalen Programmierung bieten einige Vorteile. Während in der Objektorientierten Programmierung oft nicht ersichtlich ist, warum eine Variable zu einem gewissen Zeitpunkt einen gewissen Wert hat, lässt sich in der Funktionalen Programmierung durch eine einfache Rückverfolgung der Funktionsaufrufe ermitteln, wo jeder Wert bestimmt worden ist.
+
+Darüber hinaus sind Funktionen der funktionalen Programmierung oft besser zu testen \cite{hinsen2009functional_programming} \cite{benton2016js_functional}. Dies liegt unter anderem daran, dass nur die Eingabewerte übergeben und die Ausgabe überprüft werden muss. Bei Objektorientierter Programmierung müssen vor der Ausführung von Tests eventuelle Seiteneffekte verhindert werden und weitere Initialisierungen, beispielsweise von Attributen der Klasse, getroffen werden.
+
+Die Entscheidung über die Verwendung Funktionaler Programmierung muss jedoch nicht binär sein. Viele Programmiersprachen, darunter auch JavaScript und folglich TypeScript, ermöglichen das Schreiben von funktionalem Code und verfügen gleichzeitig über Syntax für Objektorientierte Programmierung \citep{benton2016js_functional}.
+
+Daher ist es möglich, ausgewählte Teile von Programmen nach Funktionaler Programmierung zu entwickeln und an anderen Stellen bewusst auf einzelne oder gar sämtliche Aspekte des Paradigmas zu verzichten. So können an diesen Stellen dennoch die erwähnten Vorteile genossen werden.
 
 \subsection{Testgetriebene Entwicklung}
 \label{state_of_the_art:tdd}
