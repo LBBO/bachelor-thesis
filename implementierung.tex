@@ -107,6 +107,32 @@ Alternativ zu den Adjazenzmatrizen könnten auch Kantenlisten verwendet werden. 
 
 Die Betrachtung der Graphentheoretischen Lösung ergibt also in diesem Fall keine Verbesserung der Laufzeit. Nach persönlichem Empfinden ist die erste Lösung jedoch leichter zu verstehen und wurde angesichts der gleichen Laufzeit aufgrund dieses Kriteriums ausgewählt und umgesetzt.
 
+
+\subsection{Implementierung konkreter Erweiterungen}
+Um die Funktionsfähigkeit des entworfenen Erweiterungssystems zu demonstrieren, werden exemplarisch einige Erweiterungen entwickelt. Zunächst werden die Installationen von React und Angular umgesetzt. Dadurch werden zwei der drei betrachteten Frameworks von \gls{GWA} unterstützt. Vue als fehlendes Framework verfügt über einen Installationsprozess, der dem von Angular sehr ähnelt, weshalb seine Implementierung keine neuen Konzepte erfordern würde.
+
+Die initiale Projekterzeugung für beide Frameworks erfolgt über \verb/npx/, einem Hilfsbefehl von \gls{npm}, der ein gewünschtes Paket temporär herunterlädt, installiert und sofort ausführt. Diesen Befehl werden auch weitere Erweiterungen nutzen, um stets die aktuellen Versionen von Bibliotheken und Werkzeugen zu installieren.
+
+Aufgrund seiner zentralen Stellung wird als nächstes eine Erweiterung für TypeScript implementiert. Da alle untersuchten Frameworks jedoch ggf. TypeScript mitinstallieren, muss diese Erweiterung keinen Installationsprozess durchführen. Die Erweiterung dient also zum einen als Auswahlmöglichkeit für TypeScript. Frameworks prüfen dann während ihrer Installation, ob diese Erweiterung ausgewählt wurde, um entsprechend fortzufahren.
+
+Darüber hinaus ist TypeScript-Erweiterung jedoch in der Lage, entsprechend den Wünschen von Nutzenden die TypeScript-Kompilerkonfiguration anzupassen. Diese Konfigurationen werden in einer \gls{JSON}-Datei vorgenommen. Diese Dateien zu bearbeiten ist aufgrund der tiefen Integration von \gls{JSON} in JavaScript in der Regel sehr simpel; allerdings verfügt diese Spezielle Datei über zusätzliche Syntax zum Schreiben von Kommentaren \cite{JSON_MDN}. In den von TypeScript erzeugbaren Konfigurationsdateien sind viele solcher Kommentare vorhanden, die zudem auf eine bestimmte Weise hinter den Konfigurationszeilen eingerückt sind.
+
+Diese Kommentare würden durch eine Bearbeitung mit den in Node.js integrierten Funktionen verloren gehen. Daher wurden eigene Funktionen geschrieben, die nur für die konkret benötigten Konfigurationseigenschaften funktionieren, aber dabei die Kommentareinrückung beibehalten können.
+
+Als weitere Kategorie von Erweiterungen werden CSS-Präprozessoren entwickelt. Die Auswahl der unterstützten Präprozessoren ergibt sich durch die von Angular unterstützen Präprozessoren. Bis auf einen werden diese auch von React unterstützt, wobei die Installation in React-Projekten von \gls{GWA} selbst vorgenommen werden muss, während die Installation in Angular-Projekten per weitergabe eines \gls{CLI}-Argumentes geschehen kann.
+
+Die Installation in React-Projekten erfordert drei Schritte. Zunächst müssen für die Präprozessoren benötigte \gls{npm}-Pakete installiert werden. Daraufhin werden bestimmte Dateien aus dem Projektverzeichnis durch andere, vorher festgelegte Dateien ausgetauscht werden. Die eingesetzten Dateien haben einen konstanten Inhalt, der zwischen Projekten nicht variiert. Zuletzt müssen in einigen React-Dateien die Importierungen der ausgetauschen Dateien angepasst werden.
+
+Der Schritt der Installation von \gls{npm}-Paketen ist für viele Erweiterungen notwendig. Da der zu verwendende Paketmanager von Nutzenden ausgewählt, wird, wie in der Konzeptionierung ausgearbeitet, eine Paketmanager-Strategie entworfen, welches in Abbildung \missingQuote näher dargestellt wird. Diese wird für die beiden zu unterstützdenen Paketmanager \gls{npm} und Yarn implementiert. Bei der Auswahl des Paketmanagers wird die zugehörige Strategie erzeugt und im weiteren Verlauf an sämtliche Erweiterungen gereicht, wo sie vollständig die Installation aller benötigten Pakete übernimmt.
+
+Der Austausch der Dateien wird von Node.js-Funktionen übernommen und bedarf keiner weiteren Verallgemeinerung. Das Ändern der Importierungen wird von zwei Hilfsfunktionen übernommen, die die alten Importierungen entfernen und die neuen erzeugen, da dieser Schritt auch von anderen Erweiterungen benötigt wird.
+
+Als Beispiel eines Werkzeuges, das ausschließlich Entwicklungszwecken dient und daher nur über Konfigurationsdateien verfügt und keine Auswirkungen auf den zu erzeugenden Produktivcode hat, wird eine Erweiterung für ESLint implementiert. Im Fall von Angular geschieht dies über ein \gls{npm}-Paket, welches erneut mit \verb/npm/ ausgeführt wird. Für sonstige Frameworks werden zunächst benötigte \gls{npm}-Pakete installiert, bevor eine an das Framework angepasste Konfigurationsdatei erzeugt wird. Diese Datei besteht größtenteils aus normalen \gls{JSON}-Daten und ist daher leicht, wie bereits erwähnt, generierbar.
+
+Im Rahmen der letzten entwickelten Erweiterung wird Unterstützung für Redux eingebaut. Diese Erweiterung ist daher interessant, da Redux eine reine JavaScript- / TypeScript-Bibliothek ist, weshalb sich ihre Installation in einem Projekt nur auf JavaScript- / TypeScript-Code auswirkt. Um einen leichteren Einstieg in die Bibliothek zu ermöglichen, soll für alle Frameworks eine Beispielkomponente erzeugt und in die Applikation eingebunden werden, die die Verwendung der Bibliothek demonstriert.
+
+Die Erzeugung solchen Codes stellt eine besondere Herausforderung dar, da der Code sowohl in TypeScript als auch in JavaScript erzeugbar sein muss. Auf diese Problematik wird genauer in Kapitel \ref{impl:js_from_ts} eingegangen. Darüber hinaus muss die generierte Beispielkomponente jeweils in das Projekt eingebunden werden. Da auch diese Aufgabe öfter auftreten wird, wird hierfür eine weitere Hilfsfunktion geschrieben.
+
 \subsection{Umsetzung des Dialogs}
 Der Dialog mit Nutzenden lässt sich grob in drei Aufgaben unterteilen. Die erste Aufgabe ist das Untersuchen der \gls{CLI}-Argumente. In diesem Schritt werden keine Ausgaben erzeugt, aber da er auf einer manuellen Eingabe operiert, zählt er trotzdem zum Prozess des Dialogs.
 
@@ -176,6 +202,7 @@ Alternativ kann durch händisches Festlegen der Installationsreihenfolge gewähr
 Insbesondere, da die Implementierung der bisher beobachteten Anforderungen in Form von inhaltlichen Regeln keine Zukunftssicherheit bietet und dennoch deutlich komplexer wäre, wurde nach der zweiten vorgestellten Methode vorgegangen. Alle Auswählbaren Erweiterungen wurden in einem Array derart aufgelistet, dass die Reihenfolge der Erweiterungen in dem Array die Installationsreihenfolge festlegt. Dieses Array wird zugleich überall dort verwendet, wo eine vollständige Liste aller Erweiterungen benötigt wird.
 
 \subsubsection{Erzeugung von TypeScript- und JavaScript-Dateien}
+\label{impl:js_from_ts}
 Im Rahmen der Installation vieler Erweiterungen sind JavaScript- bzw. TypeScript-Dateien (mit entsprechendem Code) zu erzeugen. Hierfür lassen sich trivialerweise Beispieldateien anlegen, von denen dann gemäß der getroffenen Auswahl die richtige ausgewählt und in das neue Projekt kopiert wird. Dieser Ansatz hat jedoch den Nachteil, dass er viel Code verursachen würde, der (bis auf die Existenz von Typen) dupliziert wäre. Das würde die Wartung etwas aufwändiger und unangenehmer machen.
 
 Zudem könnten zwei in diesem Sinne äquivalente Dateien versehentlich verschieden bearbeitet werden, sodass in nur einer der beiden Dateien ein Fehler eingeführt wird. Derartige Fehler können nur durch sehr ausgiebiges Testen gefunden werden und bleiben daher leicht unbemerkt.
