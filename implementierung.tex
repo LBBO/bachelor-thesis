@@ -50,7 +50,7 @@ Da aber beim Start des Programmes alle möglichen Erweiterungen bekannt sind, k�
 \subsubsection{Überprüfung der Umsetzbarkeit der Restriktionen}
 Während  der Implementierung verschiedener Erweiterungen ist es versehentlich passiert, dass eine Konstellation von Restriktionen definiert wurde, die einen inneren Widerspruch enthält.
 
-Da zu erwarten ist, dass verschiedene Leute ohne Kenntnis aller anderen Erweiterungen neue Erweiterungen erschaffen oder bestehende Erweiterungen modifizieren werden, sollte verhindert werden, dass versehentlich solche Kombinationen von Restriktionen erzeugt werden. Daher gilt es, mindestens zu jeder Kompilierzeit alle Restriktionen auf ihre Umsetzbarkeit zu überprüfen und im Falle eines Widerspruchs eine Warnung auszugeben. Da im verwendeten Projektumfeld die Ausführung während der Komiplierzeit sich als etwas schwieriger gestaltet hätte und die Überprüfung dieser Restriktionen nicht merklich lange dauert, wurde diese Überprüfung in die Ausführung der automatischen Tests verschoben.
+Da zu erwarten ist, dass verschiedene Leute ohne Kenntnis aller anderen Erweiterungen neue Erweiterungen erschaffen oder bestehende Erweiterungen modifizieren werden, sollte verhindert werden, dass versehentlich solche Kombinationen von Restriktionen erzeugt werden. Daher gilt es, mindestens zu jeder Kompilierzeit alle Restriktionen auf ihre Umsetzbarkeit zu überprüfen und im Falle eines Widerspruchs eine Warnung auszugeben. Da im verwendeten Projektumfeld die Ausführung während der Kompilierzeit sich als etwas schwieriger gestaltet hätte und die Überprüfung dieser Restriktionen nicht merklich lange dauert, wurde diese Überprüfung in die Ausführung der automatischen Tests verschoben.
 
 Ein triviales Beispiel einer unmöglichen Kombination von Restriktionen wäre ein Paar von Abhängigkeiten $A$ und $B$, wobei $A$ und $B$ exklusiv zueinander sind und gleichzeitig $A$ von $B$ abhängt. Es können in diesem Beispiel niemals beide Anforderungen gleichzeitig erfüllt werden.
 
@@ -241,6 +241,8 @@ Neben dem Einfügen von Komponenten gibt es noch weitere Änderungen, die vorneh
 Während der Entwicklung sind einige Probleme aufgetreten, mit denen bei der Konzeptionierung nicht gerechnet worden ist. Die folgenden Unterkapitel beschreiben diese Probleme und wie sie gelöst worden sind.
 
 \subsubsection{Falsche Typdefinitionen von inquirer}
+\label{inquirer_type_issue}
+
 Wie bereits beschrieben worden ist, wurde für die Entwicklung von \gls{GWA} TypeScript verwendet. Da aber einige der verwendeten Bibliotheken, darunter inquirer \cite{inquirer_package_json}, nicht in TypeScript entwickelt wurden und auch keine eigenen von Hand erzeugten Typdefinitionen beinhalten, müssen diese Typdefinitionen aus dritten Quellen bezogen werden.
 
 Dieses Problem ist weit verbreitet und kann häufig mittels des DefinitelyTyped-Projektes gelöst werden. Dies ist ein großes Projekt, was für derartige \gls{npm}-Pakete Typdefinitionen sammelt und als gesonderte \gls{npm}-Pakete veröffentlicht \cite{DT_github}.
