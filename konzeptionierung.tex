@@ -42,7 +42,7 @@ Seit 2020 wird Cypress öfter als vergleichbare Projekte wie Puppeteer, Webdrive
 
 Einige der zuvor aufgeführten Werkzeuge bieten Leistungen an, die dabei helfen können, sicherzustellen, dass in ein \gls{VCS} eingepflegter Code immer gewissen Standards entspricht. Die automatischen Tests können beispielsweise garantieren, dass kein zuvor existierendes (und von Tests abgedecktes) Feature kaputt gemacht worden ist, und Prettier und ESLint könne garantieren, dass der Code einem gewissen Stil entspricht. Andere Werkzeuge wie CSS-Präprozessoren hingegen bieten in dieser Hinsicht keine weiteren Vorteile.
 
-Um die Qualität des Codes auf einem möglichst hohen Niveau zu halten, kann es also sinnvoll sein, diese entsprechenden Werkzeuge automatisch vor der Einpflegung des Codes in ein \gls{VCS} ausführen zu lassen. Genau diese Möglichkeit bietet Husky, sofern das \gls{VCS} Git verwendet wird. Diese Annahme lässt sich durchaus treffen, da Git mit einem Abstand von ??? das am weitesten verbreitete \gls{VCS} ist \missingQuote.
+Um die Qualität des Codes auf einem möglichst hohen Niveau zu halten, kann es also sinnvoll sein, diese entsprechenden Werkzeuge automatisch vor der Einpflegung des Codes in ein \gls{VCS} ausführen zu lassen. Genau diese Möglichkeit bietet Husky, sofern das \gls{VCS} Git verwendet wird. Diese Annahme lässt sich durchaus treffen, da Git mit einer Nutzungsquote von 94,41\% unter professionellen Entwickelnden das am weitesten verbreitete \gls{VCS} ist \cite{git_usage}.
 
 Mithilfe von Husky lassen sich mit wenig Konfigurationsaufwand Skripte festlegen, die vor dem Speichern von Code in Git ausgeführt werden sollen. Scheitert eines dieser Skripte, so wird der Speichervorgang abgebrochen. Lint-staged erleichtert hierbei das Überprüfen der geänderten Dateien, sodass nicht bei jeder Änderung der gesamte Code geprüft werden muss. Dennoch kann die Ausführung dieser Prozesse den Speichervorgang verzögern, was bei großen Projekten unerwünscht sein kann.
 
@@ -62,7 +62,7 @@ Außerdem wurden die folgenden Bibliotheken installiert:
 
 Diese Reducer sind stets pure Funktionen\footnote{D.h. sie sind seiteneffektfrei und ergeben bei gleicher Eingabe immer die gleiche Ausgabe.} und sind daher (da sie keinen Initialisierungsprozess voraussetzen und nichts anderes beeinflussen) sehr leicht testbar. Außerdem ermöglicht Redux in Kombination mit einer Browsererweiterung mehrere interessante Features, darunter ein Feature namens \glqq Zeitreise\grqq\, mit dem man den Store zu einem beliebigen vorherigen Stand zurücksetzen kann.
 
-Redux lässt sich als eine Implementierung des Kommandopatterns \missingQuote\ betrachten. Hierbei stellen die Actions die Kommandos dar und der Store ist der Ausführer, der auch die Kommandohistorie verwaltet. Entsprechend stellt Redux auch automatisch eine Aufwandslose Undo-Redo-Funktionalität zur Verfügung.
+Redux lässt sich als eine Implementierung des Kommandopatterns betrachten. Hierbei stellen die Actions die Kommandos dar und der Store ist der Ausführer, der auch die Kommandohistorie verwaltet. Entsprechend stellt Redux auch automatisch eine Aufwandslose Undo-Redo-Funktionalität zur Verfügung.
 
 Da Redux die meistverwendete Bibliothek für Statemanagement ist \cite{stateofjs}, wird ihre Installation stellvertretend für Alternativen wie MobX betrachtet. Ausnahme hiervon bildet jedoch Vuex, da es eine sehr hohe Ähnlichkeit zu Redux aufweist, sich mit besonders wenig Aufwand in einem Vue-Projekt installieren lässt und es für Vue-Projekte anstelle von Redux empfohlen wird \cite{vuejs_docs:redux_vs_vuex}.
 
@@ -112,7 +112,7 @@ Neue Probleme weisen jedoch die Einbindung von Redux und Routern auf. Diese Bibl
 
 In React ist das umsetzbar, indem die oberste Komponente von sogenannten \glqq Providern\grqq\ umgeben wird, die einen Wert und einen zugehörigen Schlüssel entgegennehmen und dann jeder ihnen unterliegenden Komponente den Wert unter dem jeweiligen Schlüssel zur Verfügung stellen. Das Umgeben der obersten Komponente ist also notwendig, damit alle Komponenten der gesamten Applikation Zugriff auf diese Werte haben. Falls dies nicht gewünscht ist, kann der zugehörige Provider verschoben werden.
 
-In Angular ist es für eine sinnvolle Verwendung von Redux sinnvoll, einen Angular-Service einzurichten. Dies ermöglicht die einfache Erstellung eines Singleton \missingQuote Store-Objektes und erlaubt es gleichzeitig, mit Angular-typischen Mitteln wie RxJS\footnote{\url{https://rxjs.dev/}}-Methoden auf den Store zuzugreifen. Im Grunde genommen handelt es sich hierbei aber erneut nur um das erstellen einer Datei mit vorbestimmtem Inhalt.
+In Angular ist es für eine möglichst simple Verwendung von Redux sinnvoll, einen Angular-Service einzurichten. Dies ermöglicht die einfache Erstellung eines Singleton Store-Objektes und erlaubt es gleichzeitig, mit Angular-typischen Mitteln wie RxJS\footnote{\url{https://rxjs.dev/}}-Methoden auf den Store zuzugreifen. Im Grunde genommen handelt es sich hierbei aber erneut nur um das erstellen einer Datei mit vorbestimmtem Inhalt.
 
 Im Zusammenhang mit Vue fallen keine weiteren Probleme auf, da hier für Redux Vuex substituiert wird und sowohl Vuex als auch der Vue Router bereits automatisch installierbar sind.
 

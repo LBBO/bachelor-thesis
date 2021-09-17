@@ -118,6 +118,36 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{MVVM}{}%
+{%
+\gls@defglossaryentry{MVVM}%
+{%
+name={MVVM},%
+sort={MVVM},%
+type={acronym},%
+first={Model View ViewModel\glsspace (MVVM)},%
+firstplural={Model View ViewModels\glsspace (MVVMs)},%
+text={MVVM},%
+plural={MVVMs},%
+description={Model View ViewModel},%
+descriptionplural={Model View ViewModel\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Model View ViewModel},%
+longplural={Model View ViewModels},%
+short={MVVM},%
+shortplural={MVVMs},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{DOM}{}%
 {%
 \gls@defglossaryentry{DOM}%
