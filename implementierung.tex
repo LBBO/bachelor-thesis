@@ -22,9 +22,16 @@ Bei der Implementierung von Erweiterungen wurden die Exklusivitäten daher zunä
 
 In JavaScript wird dieses Problem ohne Ausgabe einer Warnung dadurch gelöst, dass eine von beiden Referenzen den Wert \verb|undefined| annimmt, also dass eine von beiden Erweiterungen eine Exklusivität zu \verb|undefined| erhält.
 
-Dasselbe Problem entsteht auch in anderen, gelegentlich notwendigen Situationen. Wenn beispielsweise ein Framework von einer Erweiterung abhängt und dann die Deaktivierungsprüfung dieser Erweiterung beinhaltet, dass geprüft werden muss, ob das Framework ausgewählt wurde, entstehen wieder zyklische Verweise innerhalb der Definitionen der Erweiterungen. \missingQuote (einfach durch abbildung verdeutlichen)
+  \begin{figure}
+	\centering
+		\includegraphics[width=6cm]{dependency_installation_reference_loop.png}
+      	\caption{Ein Beispiel, wie ohne symmetrische Definition der Exklusivität ein zyklischer Codeverweis entstehen kann.}
+		\label{fig:impl:dependency_installation_import_issue_example}
+  \end{figure}
 
-Ein Lösungsansatz für dieses Problem wäre, die Definition und die \glqq Füllung\grqq\ der Erweiterungen getrennt voneinander durchzuführen. So könnte erst für jede Erweiterung ein leeres Objekt definiert werden, auf das frei verwiesen werden könnte. Daraufhin würden diese Objekte erst mit den eigentlichen Inhalten der Erweiterung gefüllt.
+Dasselbe Problem entsteht auch in anderen, gelegentlich notwendigen Situationen. Ein Beispiel hierfür wird in Abbildung \ref{fig:impl:dependency_installation_import_issue_example} illustriert. In diesen Fällen wird ein Teil des Zyklus nicht durch reine Definition bedingt, wie es bei den symmetrischen Exklusivitäten der Fall ist, sondern hier entsteht der Verweis auf die andere Erweiterung erst bei einer Prüfung in der Installation. Es muss geprüft werden, ob die andere Erweiterung ebenfalls ausgewählt wurde, da dies die aktuelle Installation beeinflussen würde.
+
+Ein Lösungsansatz für dieses Problem wäre, die Deklaration der Erweiterungen und die Definition der Inhalte der Erweiterungen getrennt voneinander durchzuführen. So könnte erst für jede Erweiterung ein leeres Objekt erzeugt werden, auf das frei verwiesen werden könnte. Daraufhin würden diese Objekte erst mit den eigentlichen Inhalten der Erweiterung gefüllt.
 
 Dieser Ansatz führt jedoch zu Konflikten mit TypeScript. Da dieselben Variablen verwendet werden sollen, um zunächst leere und dann gefüllte Objekte zu speichern, müssten diese Variablen entweder sehr allgemeine Typdefinitionen haben, die während der weiteren Implementierung zu größeren Aufwänden führen würde, oder sie müssten zu einem Zeitpunkt falsche Typdefinitionen besitzen. Auch dieser Ansatz ist suboptimal, da an entsprechenden Stellen Fehlermeldungen von TypeScript absichtlich deaktiviert oder umgangen werden müssten.
 
