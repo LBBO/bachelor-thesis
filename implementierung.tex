@@ -5,6 +5,15 @@ Der Fokus der Implementierung liegt darauf, eine Ausreichende Infrastruktur zu s
 
 Sämtliche Funktionalität wird in TypeScript implementiert, sofern dies nicht aus bestimmten Gründen anders notwendig ist. Es wird, wo möglich Funktionale Programmierung eingesetzt, um die Testbarkeit des Codes zu erleichtern. Da \gls{GWA} unabdingbar über Seiteneffekte verfügen muss, um die gewünschten Projekte erzeugen zu können, ist ein reines Vorgehen nach Funktionaler Programmierung nicht möglich.
 
+Bevor auf die einzelnen Aspekte der Implementierung eingegangen wird, verleiht Abbildung \ref{fig:impl:activity_diagram} einen Überblick über den Ablauf von \gls{GWA}.
+
+  \begin{figure}
+	\centering
+		\includegraphics[width=\linewidth]{activity_diagram_left_right.png}
+      	\caption{Ein Ablaufdiagramm von \gls{GWA}. Es zeigt zunächst die Deklaration der \gls{CLI}-Argumente mit commander, dann die Durchführung des Dialogs mit inquirer und anschließend die Installation der Erweiterungen.}
+		\label{fig:impl:activity_diagram}
+  \end{figure}
+
 \subsection{Vorgehen nach TDD}
 Da ermöglicht werden soll, dass andere Entwickelnde an \gls{GWA} mitarbeiten können sollen, ist es hilfreich, möglichst viel Funktionalität durch automatisierte Tests abzudecken. So können an beliebigen Stellen Änderungen vorgenommen werden und auch, wenn Entwickelnde keinen Überblick über den vollständigen Funktionsumfang haben, können sie durch Ausführung der Tests mit großer Zuversicht feststellen, ob sie bereits existierende Funktionalität versehentlich verändert oder ausgebaut haben.
 
