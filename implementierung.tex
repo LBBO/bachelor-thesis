@@ -17,7 +17,7 @@ Bevor auf die einzelnen Aspekte der Implementierung eingegangen wird, verleiht A
 \subsection{Vorgehen nach TDD}
 Da ermöglicht werden soll, dass andere Entwickelnde an \gls{GWA} mitarbeiten können sollen, ist es hilfreich, möglichst viel Funktionalität durch automatisierte Tests abzudecken. So können an beliebigen Stellen Änderungen vorgenommen werden und auch, wenn Entwickelnde keinen Überblick über den vollständigen Funktionsumfang haben, können sie durch Ausführung der Tests mit großer Zuversicht feststellen, ob sie bereits existierende Funktionalität versehentlich verändert oder ausgebaut haben.
 
-Um eine solche hohe Testabdeckung zu erreichen, wurde zu großen Teilen nach \gls{TDD} vorgegangen (siehe Kapitel \ref{state_of_the_art:tdd}). Insgesamt wurden 179 Tests geschrieben, die 89,02\% des Codes abdecken.
+Um eine solche hohe Testabdeckung zu erreichen, wurde zu großen Teilen nach \gls{TDD} vorgegangen (siehe Kapitel \ref{state_of_the_art:tdd}). Insgesamt wurden 190 Tests geschrieben, die 89,24\% des Codes abdecken.
 
 Wie diese Abdeckungsrate zeigt, wurde an einigen Stellen von \gls{TDD} abgewichen. Dies ist insbesondere an Stellen der Installation geschehen, wo andere Werkzeuge aufgerufen werden um Dateien zu erzeugen oder zu modifizieren. Zwar können diese Aufrufe abgefangen werden, aber ohne die tatsächliche Durchführung dieser Abhängigkeiten ist nicht überprüfbar, ob die Aufrufe tatsächlich den gewünschten Effekt haben würden.
 
