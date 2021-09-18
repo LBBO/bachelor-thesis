@@ -263,6 +263,7 @@ Wie bereits beschrieben worden ist, wurde für die Entwicklung von \gls{GWA} Typ
 
 Dieses Problem ist weit verbreitet und kann häufig mittels des DefinitelyTyped-Projektes gelöst werden. Dies ist ein großes Projekt, was für derartige \gls{npm}-Pakete Typdefinitionen sammelt und als gesonderte \gls{npm}-Pakete veröffentlicht \cite{DT_github}.
 
+\begin{figure}
 \begin{lstlisting}[caption={TypeScript-Fehlermeldung bei der Verwendung von inquirer mit einem RxJS-Observable}, captionpos=b, label={code:inquirer_ts_error}]
 TS2345: Argument of type
 'Observable<DistinctQuestion<Answers>>' is not assignable to
@@ -272,6 +273,7 @@ parameter of type 'QuestionCollection<Answers>'.
   'Observable<DistinctQuestion<Answers>>':
   _isScalar, _trySubscribe, _subscribe
 \end{lstlisting}
+\end{figure}
 
 Zu Beginn der Entwicklung ist der in Listing \ref{code:inquirer_ts_error} aufgeführte TypeScript-Fehler entstanden, der sich nicht durch Fehler im selbstgeschriebenen Code erklären lies. Besonders ungewöhnlich an dem Fehler ist, dass zwei identisch benannte Typen (woraus in der Regel folgt, dass die Typen auch tatsächlich identisch sind) zueinander inkompatibel sind.
 

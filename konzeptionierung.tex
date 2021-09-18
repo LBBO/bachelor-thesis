@@ -24,6 +24,7 @@ Als drittes wurden SCSS / Sass\footnote{\url{https://sass-lang.com/}} betrachtet
 
 Zugunsten von SCSS / Sass wurde auf die weitere Überprüfung anderer Präprozessoren wie Less\footnote{\url{https://lesscss.org/}} verzichtet.
 
+\label{konz:jest_explanation}
 Mit Jest wurde außerdem eine Bibliothek zum Schreiben und Ausführen automatisierter Tests untersucht. Diese werden in Node.js ausgeführt und verfügen daher a priori nicht über Browserspezifische APIs (wie z.B. Zugriff auf Canvas-Elemente). Viele dieser Funktionalitäten sind aber ggf. über weitere Bibliotheken Nachrüstbar. In der Regel wird Jest für Unittests verwendet.
 
 Im Vergleich zu anderen Werkzeugen vereint Jest mehrere Funktionalitäten, die sonst über mehrere Abhängigkeiten aufgeteilt sind. Wo sonst der Ausführer der Tests von der Bibliothek zur Aufstellung und Überprüfung von Annahmen (Engl.: \glqq Assertion Library\grqq) und der Mockingbibliothek getrennt ist und zur Erzeugung eines Berichtes über die Testabdeckung eine weitere Bibliothek notwendig ist, bietet Jest alle diese Features gleichzeitig an.
