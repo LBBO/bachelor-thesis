@@ -172,9 +172,9 @@ Als letzten Schritt des Dialogs sind dann weitere Fragen der einzelnen Erweiteru
 \subsubsection{Analyse der CLI-Argumente}
 Mithilfe der bereits erwähnten Bibliothek \glqq commander\grqq\ können die \gls{CLI}-Argumente mit sehr geringem Aufwand eingelesen und in gewissem Rahmen validiert werden. Dazu ist es notwendig, alle möglichen Argumente und ggf. die Typen der erwarteten zugehörigen Werte zu definieren.
 
-Für die Angabe eines bool'schen Wertes reicht dann ein Parameter ohne zugehörigen Wert (z.B. \verb|--use-some-library|), während Angabe einer Auswahl aus gegebenen Auswahlmöglichkeiten zusätzlich die Angabe eines Wertes benötigt (z.B. \verb|--package-manager npm|). Commander erzeugt bei der anschließenden Analyse der beim Befehlsaufruf übergebenen Argumente ein Objekt, bei dem jedem angegebenen Argument der entsprechende Wert (oder, falls kein Wert angegeben wurde, der bool'sche Wert \verb|true|) zugewiesen ist. Wenn eine Option beim Befehlsaufruf nicht angegeben wurde, so wird sie in das ausgegebene Objekt nicht aufgenommen.
+Für die Angabe eines bool'schen Wertes reicht dann ein Parameter ohne zugehörigen Wert (z.B. \verb|--use-some-library|), während Angabe einer Auswahl aus gegebenen Auswahlmöglichkeiten zusätzlich die Angabe eines Wertes benötigt (z.B.\linebreak \verb|--package-manager npm|). Commander erzeugt bei der anschließenden Analyse der beim Befehlsaufruf übergebenen Argumente ein Objekt, bei dem jedem angegebenen Argument der entsprechende Wert (oder, falls kein Wert angegeben wurde, der bool'sche Wert \verb|true|) zugewiesen ist. Wenn eine Option beim Befehlsaufruf nicht angegeben wurde, so wird sie in das ausgegebene Objekt nicht aufgenommen.
 
-Bool'sche Optionen können daher nicht durch Weglassung des zugehörigen Argumentes auf den Wert \verb|false| gesetzt werden. Um diese Optionen trotzdem negierbar zu machen, kann eine weitere Option mit dem Präfix \verb|no-| erstell werden (z.B. \verb|--no-use-some-library|). Diese wird von commander automatisch als Negation der zugehörigen Option (in dem Beispiel also der Option \verb|--use-some-library|) erkannt. Natürlich kann dieselbe Funktionalität auch mit anderen Benamungen umgesetzt werden; dies ist dann aber mit höherem Aufwand verbunden, da die zugehörige Logik erst implementiert werden muss.
+Bool'sche Optionen können daher nicht durch Weglassung des zugehörigen Argumentes auf den Wert \verb|false| gesetzt werden. Um diese Optionen trotzdem negierbar zu machen, kann eine weitere Option mit dem Präfix \verb|no-| erstell werden (z.B. \linebreak \verb|--no-use-some-library|). Diese wird von commander automatisch als Negation der zugehörigen Option (in dem Beispiel also der Option \verb|--use-some-library|) erkannt. Natürlich kann dieselbe Funktionalität auch mit anderen Benamungen umgesetzt werden; dies ist dann aber mit höherem Aufwand verbunden, da die zugehörige Logik erst implementiert werden muss.
 
 Um alle Fragen, die im Laufe des Dialogs gestellt werden könnten, durch solche \gls{CLI}-Argumente abzudecken, muss es möglich sein, dass Erweiterungen ebenfalls Optionen definieren können. Dies wird umgesetzt, indem Erweiterungen eine Funktion definieren können, die auf dem überreichten commander-Objekt frei Optionen definieren kann.
 
@@ -236,7 +236,7 @@ Im Rahmen der Installation vieler Erweiterungen sind JavaScript- bzw. TypeScript
 
 Zudem könnten zwei in diesem Sinne äquivalente Dateien versehentlich verschieden bearbeitet werden, sodass in nur einer der beiden Dateien ein Fehler eingeführt wird. Derartige Fehler können nur durch sehr ausgiebiges Testen gefunden werden und bleiben daher leicht unbemerkt.
 
-Aus diesen Gründen wird ein Ansatz entwickelt, der aus nur einer Vorlage sowohl entsprechende JavaScript- als auch TypeScript-Dateien erzeugen kann. Mithilfe des TypeScript-Kompilers, der ohnehin aus Entwicklungsgründen in das Projekt eingebunden ist, kann TypeScript-Code zu JavaScript-Code umgewandelt werden. Der Kompiler akzeptiert dabei ein Konfigurationsobjekt, in dem festgelegt werden kann, mit welcher Version des EcmaScript-Standards das JavaScript kompatibel sein soll. Indem hier der neuste Standard spezifiziert wird, kann der TypeScript-Kompiler angewiesen werden, JavaScript-Code zu erzeugen, der dem ursprünglichen Code weitestgehend bis auf Typinformationen ähnelt.
+Aus diesen Gründen wird ein Ansatz entwickelt, der aus nur einer Vorlage sowohl entsprechende JavaScript- als auch TypeScript-Dateien erzeugen kann. Mithilfe des TypeScript"=Kompilers, der ohnehin aus Entwicklungsgründen in das Projekt eingebunden ist, kann TypeScript-Code zu JavaScript-Code umgewandelt werden. Der Kompiler akzeptiert dabei ein Konfigurationsobjekt, in dem festgelegt werden kann, mit welcher Version des EcmaScript-Standards das JavaScript kompatibel sein soll. Indem hier der neuste Standard spezifiziert wird, kann der TypeScript-Kompiler angewiesen werden, JavaScript-Code zu erzeugen, der dem ursprünglichen Code weitestgehend bis auf Typinformationen ähnelt.
 
 Beim Kompilieren werden jedoch zuvor vorhandene Leerzeichen und Zeilenumbrüche entfernt, die aus Gründen der Formatierung und der Verständlichkeit relevant sind. Viele dieser Zeichen lassen sich wieder einfügen, indem das Kompilat mit Prettier formatiert wird. Bei einigen Durchläufen dieses Prozesses mit verschiedenen Dateien ist jedoch aufgefallen, dass Leerzeilen, die zur gedanklichen Trennung von Codeblöcken und nicht aus Konventionsgründen eingefügt wurden, nicht von Prettier wiederhergestellt werden konnten.
 
@@ -267,10 +267,10 @@ Während der Entwicklung sind einige Probleme aufgetreten, mit denen bei der Kon
 
 Wie bereits beschrieben worden ist, wurde für die Entwicklung von \gls{GWA} TypeScript verwendet. Da aber einige der verwendeten Bibliotheken, darunter inquirer \cite{inquirer_package_json}, nicht in TypeScript entwickelt wurden und auch keine eigenen von Hand erzeugten Typdefinitionen beinhalten, müssen diese Typdefinitionen aus dritten Quellen bezogen werden.
 
-Dieses Problem ist weit verbreitet und kann häufig mittels des DefinitelyTyped-Projektes gelöst werden. Dies ist ein großes Projekt, was für derartige \gls{npm}-Pakete Typdefinitionen sammelt und als gesonderte \gls{npm}-Pakete veröffentlicht \cite{DT_github}.
+Dieses Problem ist weit verbreitet und kann häufig mittels des DefinitelyTyped"=Projektes gelöst werden. Dies ist ein großes Projekt, was für derartige \gls{npm}-Pakete Typdefinitionen sammelt und als gesonderte \gls{npm}-Pakete veröffentlicht \cite{DT_github}.
 
 \begin{figure}
-\begin{lstlisting}[caption={TypeScript-Fehlermeldung bei der Verwendung von inquirer mit einem RxJS-Observable}, captionpos=b, label={code:inquirer_ts_error}]
+\begin{lstlisting}[caption={TypeScript-Fehlermeldung bei der Verwendung von inquirer mit einem \mbox{RxJS-Observable}}, captionpos=b, label={code:inquirer_ts_error}]
 TS2345: Argument of type
 'Observable<DistinctQuestion<Answers>>' is not assignable to
 parameter of type 'QuestionCollection<Answers>'.
@@ -293,9 +293,9 @@ Daher wurde der zweite Ansatz verfolgt und ein Pullrequest eröffnet\footnote{\u
 
 % TODO: vielleicht anderen begriff finden?
 \subsubsection{Betriebssystemabhängige Probleme}
-Im Rahmen der meisten Installationsprozesse müssen verschiedene \gls{npm}-Pakete als Befehle ausgeführt werden. Beispielsweise wird zum Installieren von React der Befehl \verb/npx create-react-app <Projektname>/ ausgeführt. Hierfür wird die Node.js-interne Bibliothek \verb/child_process/ verwendet. Diese ermöglicht das Erzeugen und Überwachen von neuen Prozessen.
+Im Rahmen der meisten Installationsprozesse müssen verschiedene \gls{npm}-Pakete als Befehle ausgeführt werden. Beispielsweise wird zum Installieren von React der Befehl \verb/npx create-react-app <App-Name>/ ausgeführt. Hierfür wird die Node.js-interne Bibliothek \verb/child_process/ verwendet. Diese ermöglicht das Erzeugen und Überwachen von neuen Prozessen.
 
-In Unix-basierten Betriebssystemen wie Linux oder macOS lässt sich mit dieser Bibliothek problemlos der beispielhaft genannte Befehl \verb/npx create-react-app <Projektname>/ ausführen. Auf einem Windows-Computer hingegen führt der Aufruf zu einem Fehler.
+In Unix-basierten Betriebssystemen wie Linux oder macOS lässt sich mit dieser Bibliothek problemlos der beispielhaft genannte Befehl \verb/npx create-react-app <App-Name>/ ausführen. Auf einem Windows-Computer hingegen führt der Aufruf zu einem Fehler.
 
 Das durch diesen Befehl aufgerufene Programm \verb/npx/ kann in Unix-basierten Betriebssystemen direkt in einem neuen Prozess gestartet werden. Das Programm liegt in Form einer JavaScript-Datei vor, an deren Beginn deklariert wird, dass diese von Node.js ausgeführt werden muss. Ist Node.js installiert, so geschieht dies automatisch.
 
