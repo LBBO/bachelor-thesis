@@ -3,7 +3,7 @@
 
 Der Fokus der Implementierung liegt darauf, ein ausreichende Grundgerüst zu schaffen, damit die Implementierung einzelner Erweiterungen keine neuen Herausforderungen aufweist. Daher werden Erweiterungen nur exemplarisch entwickelt, um die Funktionalität des Grundgerüsts zu demonstrieren.
 
-Es wird, wo möglich Funktionale Programmierung eingesetzt, um die Testbarkeit des Codes zu erleichtern. Da \gls{GWA} unabdingbar über Seiteneffekte verfügen muss, um die gewünschten Projekte erzeugen zu können, ist ein reines Vorgehen nach Funktionaler Programmierung jedoch nicht möglich.
+Es wird, wo möglich, Funktionale Programmierung eingesetzt, um die Testbarkeit des Codes zu erleichtern. Da \gls{GWA} unabdingbar über Seiteneffekte verfügen muss, um die gewünschten Projekte erzeugen zu können, ist ein reines Vorgehen nach Funktionaler Programmierung jedoch nicht möglich.
 
 Bevor auf die einzelnen Aspekte der Implementierung eingegangen wird, verleiht Abbildung \ref{fig:impl:activity_diagram} einen Überblick über den Ablauf von \gls{GWA}.
 
@@ -144,11 +144,11 @@ Die initiale Projekterzeugung für beide Frameworks erfolgt über \verb/npx/, ei
 
 Aufgrund seiner zentralen Stellung wird als nächstes eine Erweiterung für TypeScript implementiert. Da alle untersuchten Frameworks jedoch ggf. TypeScript mitinstallieren, muss diese Erweiterung keinen Installationsprozess durchführen. Sie dient also zum einen als Auswahlmöglichkeit für TypeScript. Frameworks prüfen dann während ihrer Installation, ob diese Erweiterung ausgewählt wurde, um entsprechend fortzufahren.
 
-Zum anderen ist die TypeScript-Erweiterung jedoch in der Lage, entsprechend den Wünschen von Nutzenden die TypeScript-Kompilerkonfiguration anzupassen. Diese Konfiguration wird in einer \gls{JSON}-Datei vorgenommen. Aufgrund der tiefen Integration von \gls{JSON} in JavaScript ist das Bearbeiten dieser Dateien in der Regel sehr simpel; allerdings verfügt diese Spezielle Datei über zusätzliche Syntax zum Schreiben von Kommentaren \cite{JSON_MDN}. In den TypeScript-Konfigurationsdateien sind oft Kommentare am Ende von tatsächlichen Konfigurationszeilen vorhanden, die zudem auf eine bestimmte Weise eingerückt sind, sodass alle Kommentare unabhängig des sonstigen Inhalts ihrer Zeilen untereinander stehen.
+Zum anderen ist die TypeScript-Erweiterung jedoch in der Lage, entsprechend den Wünschen von Nutzenden die TypeScript-Kompilerkonfiguration anzupassen. Diese Konfiguration wird in einer \gls{JSON}-Datei vorgenommen. Aufgrund der tiefen Integration von \gls{JSON} in JavaScript ist das Bearbeiten dieser Dateien in der Regel sehr simpel; allerdings verfügt diese spezielle Datei über zusätzliche Syntax zum Schreiben von Kommentaren \cite{JSON_MDN}. In den TypeScript-Konfigurationsdateien sind oft Kommentare am Ende von tatsächlichen Konfigurationszeilen vorhanden, die zudem auf eine bestimmte Weise eingerückt sind, sodass alle Kommentare unabhängig des sonstigen Inhalts ihrer Zeilen untereinander stehen.
 
 Diese Kommentare würden durch eine Bearbeitung mit den in Node.js integrierten Funktionen verloren gehen. Daher wurden eigene Funktionen geschrieben, die nur für die konkret benötigten Konfigurationseigenschaften funktionieren, aber dabei die Kommentareinrückung beibehalten können.
 
-Als weitere Kategorie von Erweiterungen werden CSS-Präprozessoren entwickelt. Die Auswahl der unterstützten Präprozessoren ergibt sich durch die von Angular unterstützen Präprozessoren. Bis auf einen werden diese auch von React unterstützt, wobei die Installation in React-Projekten von \gls{GWA} selbst vorgenommen werden muss, während die Installation in Angular-Projekten per weitergabe eines \gls{CLI}-Argumentes geschehen kann.
+Als weitere Kategorie von Erweiterungen werden CSS-Präprozessoren entwickelt. Die Auswahl der unterstützten Präprozessoren ergibt sich durch die von Angular unterstützten Präprozessoren. Bis auf einen werden diese auch von React unterstützt, wobei die Installation in React-Projekten von \gls{GWA} selbst vorgenommen werden muss, während die Installation in Angular-Projekten per Weitergabe eines \gls{CLI}-Argumentes geschehen kann.
 
 Die Installation in React-Projekten erfordert drei Schritte. Zunächst müssen für die Präprozessoren benötigte \gls{npm}-Pakete installiert werden. Daraufhin werden bestimmte Dateien aus dem Projektverzeichnis durch andere, vorher festgelegte Dateien ausgetauscht. Die eingesetzten Dateien haben einen konstanten Inhalt, der zwischen Projekten nicht variiert. Zuletzt müssen in einigen React-Dateien die Importierungen der ausgetauschen Dateien angepasst werden.
 
@@ -228,7 +228,7 @@ Obwohl sich diese Anforderungen wie geschehen kategorisieren lassen, stellen sie
 
 Alternativ kann durch händisches Festlegen der Installationsreihenfolge gewährleistet werden, dass sämtliche Anforderungen erfüllt werden. Dieser Ansatz hat den Nachteil, dass er unübersichtlicher ist und leichter bei der Ergänzung neuer Erweiterungen Fehler gemacht werden können. Dafür ist der Implementierungsaufwand deutlich geringer.
 
-Insbesondere, da die allgemeine Implementierung der bisher beobachteten Anforderungen nicht als vollständig gelten könnte dennoch deutlich komplexer wäre, wird nach der zweiten vorgestellten Methode vorgegangen. Alle Auswählbaren Erweiterungen werden in einem Array derart aufgelistet, dass die Reihenfolge der Erweiterungen in dem Array die Installationsreihenfolge festlegt. Dieses Array wird zugleich überall dort verwendet, wo eine vollständige Liste aller Erweiterungen benötigt wird.
+Insbesondere, da die allgemeine Implementierung der bisher beobachteten Anforderungen nicht als vollständig gelten könnte dennoch deutlich komplexer wäre, wird nach der zweiten vorgestellten Methode vorgegangen. Alle auswählbaren Erweiterungen werden in einem Array derart aufgelistet, dass die Reihenfolge der Erweiterungen in dem Array die Installationsreihenfolge festlegt. Dieses Array wird zugleich überall dort verwendet, wo eine vollständige Liste aller Erweiterungen benötigt wird.
 
 \subsubsection{Erzeugung von TypeScript- und JavaScript-Dateien}
 \label{impl:js_from_ts}
@@ -249,7 +249,7 @@ Neben solchem Allgemeinen JavaScript- / TypeScript-Code muss für einige Erweite
 
 Die Anforderungen, die hierfür existieren, sind zwischen den Frameworks teilweise unterschiedlich. In allen Frameworks gibt es jedoch eine Datei, in der das Einstiegselement der \gls{DOM}-Struktur erzeugt wird (in Angular ist dies die \verb|src/app/app.component.html|, in React ist es die \verb|src/App.tsx| und in Vue.js ist es die \verb|src/App.vue|). In dieser Datei sind neu zu erzeugende Komponenten einzufügen.
 
-Dieses Einfügen neuer Komponenten soll immer an derselben Stelle erfolgen, sodass sich dort alle neuen, durch Erweiterungen hinzugefügten Komponenten nacheinander ansammeln. Eine Fachlich orientierte Lösung wäre in der Lage, die genannten Dateien korrekt zu parsen. Änderungen würden auf dem resultierenden abstrakten Syntaxbaum vorgenommen werden, bevor aus diesem wieder der ursprüngliche Code zzgl. der Modifikationen erzeugt würde. Die so vorgenommenen Änderungen sollten minimal und korrekt formatiert sein.
+Dieses Einfügen neuer Komponenten soll immer an derselben Stelle erfolgen, sodass sich dort alle neuen, durch Erweiterungen hinzugefügten Komponenten nacheinander ansammeln. Eine fachlich orientierte Lösung wäre in der Lage, die genannten Dateien korrekt zu parsen. Änderungen würden auf dem resultierenden abstrakten Syntaxbaum vorgenommen werden, bevor aus diesem wieder der ursprüngliche Code zzgl. der Modifikationen erzeugt würde. Die so vorgenommenen Änderungen sollten minimal und korrekt formatiert sein.
 
 Alternativ dazu wäre es, da diese Dateien bei jeder Installation gleich sind, möglich, über reine Textsuche die Stelle zu finden, in der die neue Komponente einzusetzen ist. Dort würde der entsprechende Code eingefügt werden und anschließend würde mithilfe von Prettier die korrekte Formatierung der Datei gewährleistet werden.
 
