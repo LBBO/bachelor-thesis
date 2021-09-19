@@ -210,3 +210,11 @@
   \end{center}
   \makeatother
 }
+
+\hyphenation{
+	Ja-va-Script
+	Type-Script
+	Erst-an-bie-ter-tem-plates
+	Frame-work
+	Frame-work-in-stal-la-tion
+}
