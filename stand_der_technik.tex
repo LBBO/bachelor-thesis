@@ -44,7 +44,7 @@ Die Erstanbietertemplates geben bereits die empfohlene Ordner- und Dateistruktur
 Außerdem ist es bei der Verwendung dieser Templates mit geringem Aufwand möglich, bestimmte empfohlene Bibliotheken und Werkzeuge nachzurüsten. So gibt es zum Beispiel Anleitungen für die Installation von Prettier oder von CSS-Präprozessoren, die aus jeweils einem in der Kommandozeile auszuführenden Befehl bestehen. Für Prettier muss zudem noch eine bestimmte, bereits existierende Datei um einige vorgegebene Zeilen ergänzt werden.
 
 \subsubsection{Angular}
-Das Angular-Team stellt das sog. Angular-\gls{CLI} zur Verfügung, das Entwickelnden beim Programmieren verschiedene wiederkehrende und repetitive Aufgaben abnehmen soll (wie z.B. die Erstellung und Einbindung neuer Komponenten). Neben diesen Aufgaben wird das Tool auch zur Erzeugung neuer Angular-Projekte genutzt.
+Das Angular-Team stellt das sog. Angular-\gls{CLI} zur Verfügung, das Entwickelnden beim Programmieren verschiedene wiederkehrende und repetitive Aufgaben abnehmen soll (wie z.B. die Erstellung und Einbindung neuer Komponenten). Neben diesen Aufgaben wird das Werkzeug auch zur Erzeugung neuer Angular-Projekte genutzt.
 
 Der Befehl \verb|ng new <project-name>| führt Nutzende in einen Dialog, bei dem zwei Fragen zur gewünschten Konfiguration des Projektes gestellt werden. Über explizit gesetzte Kommandozeilenoptionen können weitere Features konfiguriert werden, mit denen das Projekt eingerichtet wird. Diese Features sind jedoch allesamt Angular-intern, d.h. es gibt keine Möglichkeit weitere Bibliotheken oder Ähnliches installieren zu lassen, die nicht direkt vom Angular Team kommen. Selbst einige Bibliotheken (z.B. Angular Material), die vom Angular-Team direkt entwickelt werden, sind nicht in diese initiale Projektgenerierung eingebunden. Eine Ausnahme hiervon bildet die Auswählbarkeit der CSS-Präprozessoren SCSS, Sass und Less.
 
@@ -56,12 +56,12 @@ Im Gegensatz zu der React-Lösung können sich Nutzende hier (im Rahmen der besc
 \subsubsection{Vue}
 Von den drei Frameworks bietet Vue in Bezug auf die Projekterstellung das umfangreichste \gls{CLI}. Zuallererst besteht die Möglichkeit, ein Preset auszuwählen. Dies kann eines von zwei Standardpresets sein oder eines, das zuvor auf dem lokalen Computer erstellt und gespeichert wurde. Es ist auch möglich, ein bereits existierendes Preset oder ein komplett neues Preset als Kommandozeilenparameter anzugeben, um diese Frage zu überspringen.
 
-Falls kein Preset ausgewählt wird, ist zunächst im Rahmen einer Multiple-Choice-Frage eine Vorauswahl von zehn Features zu treffen, die im Projekt gewünscht bzw. nicht gewünscht sind. Daraufhin werden zu den ausgewählten Features detailliertere Fragen gestellt. Insgesamt stehen durch das Vue-\gls{CLI} Tool über 20 verschiedene Bibliotheken bzw. Werkzeuge ohne weiteren Konfigurationsaufwand zur Verfügung. Die soeben erstellte Konfiguration kann anschließend als neues Preset gespeichert werden.
+Falls kein Preset ausgewählt wird, ist zunächst im Rahmen einer Multiple-Choice-Frage eine Vorauswahl von zehn Features zu treffen, die im Projekt gewünscht bzw. nicht gewünscht sind. Daraufhin werden zu den ausgewählten Features detailliertere Fragen gestellt. Insgesamt stehen durch das Vue-\gls{CLI} Werkzeug über 20 verschiedene Bibliotheken bzw. Werkzeuge ohne weiteren Konfigurationsaufwand zur Verfügung. Die soeben erstellte Konfiguration kann anschließend als neues Preset gespeichert werden.
 
 Wie im Angular-\gls{CLI} können auch hier CSS-Präprozessoren und ein Framework"=spezifischer Router in das Projekt eingebunden werden. Darüber hinaus besteht jedoch eine Auswahl aus verschiedenen Werkzeugen zur statischen Codeanalyse, verschiedenen Bibliotheken und Werkzeugen sowohl für Unit- als auch für Ende-zu-Ende-Tests und weiteren vereinzelten Bibliotheken und Features.
 
 %\subsubsection{Vergleich der Möglichkeiten zwischen Frameworks}
-%Alle drei Tools bieten Entwickelnden die Möglichkeit, eigene Erweiterungen zu erarbeiten und zu veröffentlichen. Im Falle von React muss dies in Form eines Templates geschehen. Da nur ein Template zur Erstellung eines Projektes genutzt werden kann, sind derartige Erweiterungen hier also exklusiv.
+%Alle drei Werkzeuge bieten Entwickelnden die Möglichkeit, eigene Erweiterungen zu erarbeiten und zu veröffentlichen. Im Falle von React muss dies in Form eines Templates geschehen. Da nur ein Template zur Erstellung eines Projektes genutzt werden kann, sind derartige Erweiterungen hier also exklusiv.
 
 %Bei Angular und React ist es jedoch möglich, auch Erweiterungen zu entwickeln, die zusätzlich zu anderen Optionen und Erweiterungen nutzbar sind. Für das Angular \gls{CLI} kann man sogenannte Schematics entwickeln, die das Hinzufügen und Einbinden einer Bibliothek vollautomatisch übernehmen. Diese Schematics müssen aber leider nach der Installation ausgeführt werden und müssen insbesondere von Nutzenden entdeckt werden. Hierfür gibt es keine eigene Plattform o.ä. und die Auswahl der Schematics, die schon bei der Projekterstellung auswählbar sind, beschränkt sich auf Angular-interne Features (z.B. die Einfügung eines Routers). Selbst Libraries, die auch vom Angular-Team betreut werden (z.B. Angular Material) müssen später per Schematic nachgerüstet werden.
 
@@ -92,7 +92,7 @@ Wie im Angular-\gls{CLI} können auch hier CSS-Präprozessoren und ein Framework
 %	  \label{tab:automatically_installable_libs_per_framework}
 %  \end{table}
 
-%Außerdem bieten alle drei der genannten Tools keine Unterstützung für andere Frameworks. Daher ist beispielsweise der große Umfang der Features des Vue CLI‘s leider nicht in einem Angular-Projekt nutzbar.
+%Außerdem bieten alle drei der genannten Werkzeuge keine Unterstützung für andere Frameworks. Daher ist beispielsweise der große Umfang der Features des Vue CLI‘s leider nicht in einem Angular-Projekt nutzbar.
 
 \subsection{Funktionale Programmierung}
 Die Funktionale Programmierung ist ein Programmierparadigma, das ursprünglich der Mathematik entstammt. Wie der Name vermuten lässt, basiert in der Funktionalen Programmierung alles auf Funktionen. Diese unterscheiden sich jedoch von dem Begriff einer Funktion, der sonst in der Informatik geläufig ist.
